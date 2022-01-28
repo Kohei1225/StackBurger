@@ -126,6 +126,26 @@ public class CustomerScript : MonoBehaviour
 
     }
 
+    IEnumerator UpdateCoroutine()
+    {
+        while(!_HasRecieve)
+        {
+            //if (!_GameManager._IsStart) yield return null;
+
+            _CustomerMainTimer.UpdateTimer();
+            if(_CustomerMainTimer.IsTimeUp)
+            {
+                _HasRecieve = true;
+                CreateEmotion(4);
+                _GameManager.AngryNum++;
+            }
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(1);
+        StartCoroutine("LeaveShop");
+    }
+
     /// <summary> 商品を受け取って確認 </summary>
     /// <param name="stackedFoods">  </param>
     public void CheckReceivedProduct(int [] stackedFoods)
@@ -207,6 +227,23 @@ public class CustomerScript : MonoBehaviour
         return chip ;
     }
 
+    IEnumerator ComeShop()
+    {
+        Vector3 target_pos = transform.position;
+        target_pos.y = _tall + 6;
+        Vector3 vec = target_pos - transform.position;
+
+        while (vec.magnitude > 0.25f)
+        {
+            transform.position = vec.normalized * speed * Time.deltaTime;
+            vec = target_pos - transform.position;
+            yield return null;
+        }
+
+        transform.position = target_pos;
+        _HasVisit = true;
+    }
+
     void ComeStore()
     {
         //Debug.Log("ComeStore()");
@@ -218,6 +255,23 @@ public class CustomerScript : MonoBehaviour
             _HasVisit = true;
         }
         
+    }
+
+    IEnumerator LeaveShop()
+    {
+        Vector3 target_pos = transform.position;
+        target_pos.y = -15;
+        Vector3 vec = target_pos - transform.position;
+
+        while (vec.magnitude > 0.25f)
+        {
+            transform.position = vec.normalized * speed * Time.deltaTime;
+            vec = target_pos - transform.position;
+            yield return null;
+        }
+
+        sign = true;
+        _CustomerManager._IsLeaveCustomer = true;
     }
 
     void LeaveStore()
