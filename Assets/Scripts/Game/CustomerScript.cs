@@ -77,24 +77,11 @@ public class CustomerScript : MonoBehaviour
     {
         _height = RecipeList.CalcHeight(RecipeList.Menu[_OrderNum].recipe);
         chip = RecipeList.Menu[_OrderNum].value;
-        if( _height >= 15)
-        {
-            chipLevel = 15;
-            chip = 60;
-        }
-        else if(_height >= 7)
-        {
-            chipLevel = 5;
-            chip = 30;
-        }
-        else 
-        {
-            chipLevel = 2;
-            chip = 10;
-        }
+        StartCoroutine("ComeShop");
     }
 
     // Update is called once per frame
+    /*
     void Update()
     {
         if (!_GameManager._IsStart) return;
@@ -125,9 +112,11 @@ public class CustomerScript : MonoBehaviour
         }
 
     }
+    */
 
     IEnumerator UpdateCoroutine()
     {
+        Debug.Log("Update()");
         while(!_HasRecieve)
         {
             //if (!_GameManager._IsStart) yield return null;
@@ -229,19 +218,23 @@ public class CustomerScript : MonoBehaviour
 
     IEnumerator ComeShop()
     {
+        Debug.Log("ComeShop()");
         Vector3 target_pos = transform.position;
         target_pos.y = _tall + 6;
         Vector3 vec = target_pos - transform.position;
-
-        while (vec.magnitude > 0.25f)
+        float previous_mag = vec.magnitude;
+        //while (previous_mag > vec.magnitude)
+        while(vec.magnitude > 0.25f)
         {
-            transform.position = vec.normalized * speed * Time.deltaTime;
+            transform.position += vec.normalized * speed * Time.deltaTime;
+            previous_mag = vec.magnitude;
             vec = target_pos - transform.position;
             yield return null;
         }
 
         transform.position = target_pos;
         _HasVisit = true;
+        StartCoroutine("UpdateCoroutine");
     }
 
     void ComeStore()
@@ -259,13 +252,14 @@ public class CustomerScript : MonoBehaviour
 
     IEnumerator LeaveShop()
     {
+        Debug.Log("LeaveShop");
         Vector3 target_pos = transform.position;
         target_pos.y = -15;
         Vector3 vec = target_pos - transform.position;
 
         while (vec.magnitude > 0.25f)
         {
-            transform.position = vec.normalized * speed * Time.deltaTime;
+            transform.position += vec.normalized * speed * Time.deltaTime;
             vec = target_pos - transform.position;
             yield return null;
         }
