@@ -2,8 +2,9 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Game/CustomerScript.cs">
     <Files>
       <File FileName="Assets/Scripts/Game/RecipeList.cs" Line="19" Column="14" />
+      <File FileName="Assets/Scripts/Game/CustomerScript.cs" Line="271" Column="1" />
       <File FileName="Assets/Scripts/CoroutineTest.cs" Line="5" Column="25" />
-      <File FileName="Assets/Scripts/Game/CustomerManager.cs" Line="5" Column="23" />
+      <File FileName="Assets/Scripts/Game/CustomerManager.cs" Line="153" Column="42" />
       <File FileName="Assets/Scripts/Game/SelectCustomer.cs" Line="29" Column="101" />
       <File FileName="Assets/Scripts/Menu/DayChangeScript.cs" />
       <File FileName="Assets/Scripts/Button/ButtonFunctions.cs" />
@@ -41,7 +42,6 @@
       <File FileName="Assets/Scripts/Game/BGMScript.cs" />
       <File FileName="Assets/Scripts/Game/CustomerTimeLimitBar.cs" />
       <File FileName="Assets/Scripts/Game/FoodScript.cs" />
-      <File FileName="Assets/Scripts/Game/CustomerScript.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
