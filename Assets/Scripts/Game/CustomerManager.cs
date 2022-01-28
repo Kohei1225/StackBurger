@@ -41,6 +41,8 @@ public class CustomerManager : MonoBehaviour
     /// <summary> 登場できるお客さんの数 </summary>
     private int _CustomerMax;
 
+    private bool _HasCallFirstCustomer = false;
+
     public GameObject[] CurrentCustomers
     {
         get { return _CurrnetCustomers; }
@@ -119,7 +121,36 @@ public class CustomerManager : MonoBehaviour
         var pos = new Vector3(_CustomersSliders[Num].transform.position.x, -15, 15);
 
         _CurrnetCustomers[Num] = Instantiate( customer, pos, Quaternion.identity);
-        CustomerInfo[Num] = _CurrnetCustomers[Num].GetComponent<CustomerScript>();  
+        CustomerInfo[Num] = _CurrnetCustomers[Num].GetComponent<CustomerScript>();
+        if(!_HasCallFirstCustomer)
+        {
+            var product_type = RecipeList.ProductType.BURGER;
+            switch(_GameManager.CurrentDay)
+            {
+                case 3:
+                    product_type = RecipeList.ProductType.BURGER;
+                    break;
+                case 4:
+                    product_type = RecipeList.ProductType.SANDWITCH;
+                    break;
+                case 5:
+                    product_type = RecipeList.ProductType.MUFFIN;
+                    break;
+                case 6:
+                    product_type = RecipeList.ProductType.BIG;
+                    break; 
+                case 7:
+                    product_type = RecipeList.ProductType.DISH;
+                    break;
+                default:
+                    CustomerInfo[Num].OrderProduct();
+                    break;
+            }
+            CustomerInfo[Num].OrderProduct(product_type);
+            _HasCallFirstCustomer = true;
+            return;
+        }
+        CustomerInfo[Num].OrderProduct();
     }
 
     void InitializeEmotionArray()
