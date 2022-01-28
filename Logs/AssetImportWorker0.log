@@ -503,3 +503,172 @@ System memory in use after: 177.0 MB.
 Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2371.
 Total: 9.400423 ms (FindLiveObjects: 1.700875 ms CreateObjectMapping: 0.104715 ms MarkObjects: 6.975516 ms  DeleteObjects: 0.617057 ms)
 
+========================================================================
+Received Import Request.
+  Time since last request: 11745.983019 seconds.
+  path: Assets/Scenes/Practice.unity
+  artifactKey: Guid(46010542b9d5c422aae0cffd115ee5e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Practice.unity using Guid(46010542b9d5c422aae0cffd115ee5e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7533efad3c14df7d2fe09a98455b3933') in 0.238630 seconds
+  Import took 0.394264 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 36.394815 seconds.
+  path: Assets/Scripts/CoroutineTest.cs
+  artifactKey: Guid(77d7e62d159b946fca5076831f837926) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/CoroutineTest.cs using Guid(77d7e62d159b946fca5076831f837926) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b095b47ee5b66623af0a71305d39928') in 0.048676 seconds
+  Import took 0.089778 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001437 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.548 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.43 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1844 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 177.3 MB.
+System memory in use after: 177.4 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2376.
+Total: 4.797999 ms (FindLiveObjects: 1.143763 ms CreateObjectMapping: 0.115827 ms MarkObjects: 2.086835 ms  DeleteObjects: 1.450635 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001261 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.78 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.370 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.46 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1844 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 177.5 MB.
+System memory in use after: 177.6 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2380.
+Total: 3.038527 ms (FindLiveObjects: 0.861620 ms CreateObjectMapping: 0.125574 ms MarkObjects: 2.020908 ms  DeleteObjects: 0.029316 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 338.798893 seconds.
+  path: Assets/Scripts/CoroutineTest.cs
+  artifactKey: Guid(77d7e62d159b946fca5076831f837926) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/CoroutineTest.cs using Guid(77d7e62d159b946fca5076831f837926) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82f592096af4b0eb5695413dc2f9895a') in 0.013232 seconds
+  Import took 0.019657 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.051913 seconds.
+  path: Assets/Scripts/CoroutineTest.cs
+  artifactKey: Guid(77d7e62d159b946fca5076831f837926) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/CoroutineTest.cs using Guid(77d7e62d159b946fca5076831f837926) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82f592096af4b0eb5695413dc2f9895a') in 0.003815 seconds
+  Import took 0.010049 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000693 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.40 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.332 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.45 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1844 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 177.6 MB.
+System memory in use after: 177.7 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2384.
+Total: 3.688572 ms (FindLiveObjects: 0.325514 ms CreateObjectMapping: 0.092088 ms MarkObjects: 2.664231 ms  DeleteObjects: 0.605191 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 80.662068 seconds.
+  path: Assets/Scripts/CoroutineTest.cs
+  artifactKey: Guid(77d7e62d159b946fca5076831f837926) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/CoroutineTest.cs using Guid(77d7e62d159b946fca5076831f837926) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e2e95d5d2de2594d905aadc927f055b6') in 0.011250 seconds
+  Import took 0.016649 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.054247 seconds.
+  path: Assets/Scripts/CoroutineTest.cs
+  artifactKey: Guid(77d7e62d159b946fca5076831f837926) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/CoroutineTest.cs using Guid(77d7e62d159b946fca5076831f837926) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e2e95d5d2de2594d905aadc927f055b6') in 0.005001 seconds
+  Import took 0.008518 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000757 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.50 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.476 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.40 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1844 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 177.8 MB.
+System memory in use after: 177.9 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2388.
+Total: 2.950597 ms (FindLiveObjects: 0.213752 ms CreateObjectMapping: 0.065799 ms MarkObjects: 2.011140 ms  DeleteObjects: 0.658774 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 56.283320 seconds.
+  path: Assets/Scripts/CoroutineTest.cs
+  artifactKey: Guid(77d7e62d159b946fca5076831f837926) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/CoroutineTest.cs using Guid(77d7e62d159b946fca5076831f837926) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4989a19095312df70e0105c5e8cb52b7') in 0.006619 seconds
+  Import took 0.011218 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000744 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.46 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.355 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.69 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1844 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 178.0 MB.
+System memory in use after: 178.1 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2392.
+Total: 4.370229 ms (FindLiveObjects: 1.012276 ms CreateObjectMapping: 0.121280 ms MarkObjects: 2.540354 ms  DeleteObjects: 0.694915 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 200.239273 seconds.
+  path: Assets/Scripts/CoroutineTest.cs
+  artifactKey: Guid(77d7e62d159b946fca5076831f837926) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/CoroutineTest.cs using Guid(77d7e62d159b946fca5076831f837926) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97fe6531d9c59d2b0d0bebbf762c8853') in 0.013508 seconds
+  Import took 0.018599 seconds .
+
