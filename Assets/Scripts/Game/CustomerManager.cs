@@ -82,9 +82,7 @@ public class CustomerManager : MonoBehaviour
                 _CustomerInfo = new CustomerScript[_GameManager._CustomerNum];
                 for(int i = 0; i < _GameManager._CustomerNum; i++)
                 {
-               
                     _TimeLimitBars[i] = _CustomersSliders[i].GetComponent<CustomerTimeLimitBar>();
-                    _TimeLimitBars[i]._ChangeCustomerFlag = true;
                     CallCustomer(i);
                 }
                 HasFinishFirst = false;  
@@ -104,9 +102,6 @@ public class CustomerManager : MonoBehaviour
                         //新しい客を作る
                         CallCustomer(i);
                         //メニューを投げる食材を更新してもらう
-                        _ThrowManager.reset = true;
-                        //時間制限をリセットする
-                        _TimeLimitBars[i]._ChangeCustomerFlag = true;
                     }
                 }
                 _IsLeaveCustomer = false;

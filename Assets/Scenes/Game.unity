@@ -694,7 +694,7 @@ GameObject:
   - component: {fileID: 261942398}
   - component: {fileID: 261942397}
   m_Layer: 5
-  m_Name: Fill3
+  m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1491,9 +1491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f57f14efb8364428abac1ec8c77d809a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _FillImage: {fileID: 0}
-  _ChangeCustomerFlag: 0
   _ForDebug: 0
+  _FillImage: {fileID: 0}
 --- !u!1 &585031019
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,7 +1838,7 @@ GameObject:
   - component: {fileID: 639617084}
   - component: {fileID: 639617083}
   m_Layer: 5
-  m_Name: Fill1
+  m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2165,9 +2164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f57f14efb8364428abac1ec8c77d809a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _FillImage: {fileID: 0}
-  _ChangeCustomerFlag: 0
   _ForDebug: 0
+  _FillImage: {fileID: 0}
 --- !u!1001 &716346582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3328,6 +3326,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17609b289b10c4daf9bb8d31d5099c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _TimeLimitBars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _WaitTimeGlaph:
     serializedVersion: 2
     m_Curve:
@@ -5127,7 +5129,7 @@ GameObject:
   - component: {fileID: 1296501897}
   - component: {fileID: 1296501896}
   m_Layer: 5
-  m_Name: Fill2
+  m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6298,9 +6300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f57f14efb8364428abac1ec8c77d809a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _FillImage: {fileID: 0}
-  _ChangeCustomerFlag: 0
   _ForDebug: 1
+  _FillImage: {fileID: 0}
 --- !u!1 &1578613875
 GameObject:
   m_ObjectHideFlags: 0
