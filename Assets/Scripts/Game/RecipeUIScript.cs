@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class RecipeUIScript : MonoBehaviour
 {
     /// <summary> お手本の画像 </summary>
-    [SerializeField]private Sprite [] _Recipe;
+    [SerializeField] private Sprite[] _Recipe;
     /// <summary> 何もない画像 </summary>
-    [SerializeField]private Sprite _Empty;
+    [SerializeField] private Sprite _Empty;
     /// <summary> 商品の名前 </summary>
-    string [] _RecipeNames = {
+    string[] _RecipeNames = {
         //1~5(ハンバーガー)
         "格安バーガー","バーガー","ハンバーガー","ナイスバーガー","リッチバーガー",
         //6~10(チーズバーガー)
@@ -45,7 +45,7 @@ public class RecipeUIScript : MonoBehaviour
 
     };
     [SerializeField] private SelectCustomer _SelectManager;
-    [SerializeField] private CustomerManager _JudgeManager;
+    [SerializeField] private CustomerManager _CustomerManager;
     [SerializeField] private GameSystem _GameManager;
     [SerializeField] private Text _OrderNum;
     [SerializeField] private Text _ProductName;
@@ -58,7 +58,7 @@ public class RecipeUIScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
         //_SelectManager = GameObject.Find("CustomerPlate").GetComponent<SelectCustomer>();
         //_JudgeManager = GameObject.Find("Managers").GetComponent<CustomerManager>();
         //_GameManager = GameObject.Find("Managers").GetComponent<GameSystem>();
@@ -73,21 +73,21 @@ public class RecipeUIScript : MonoBehaviour
         _ProductName.text = "\nNo Guest";
         _ProductImage.sprite = RecipeList._Empty;
         _HeightText.text = "-";
-        _HeightText.color = new Color(0,0,0);
+        _HeightText.color = new Color(0, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(_GameManager._IsStart)
+        if (_GameManager._IsStart)
         {
-            if (!_JudgeManager.CustomerInfo[_SelectManager.CustomerNum]) return ;
-            var currentCustomer = _JudgeManager.CustomerInfo[_SelectManager.CustomerNum];
+            if (!_CustomerManager.HasFinishFirst) return;
+            var currentCustomer = _CustomerManager.CustomerInfo[_SelectManager.CustomerNum];
             if (!currentCustomer) return;
 
-            if(!_JudgeManager.HasFinishFirst && currentCustomer._HasVisit && !currentCustomer._HasRecieve)
+            if (currentCustomer._HasVisit && !currentCustomer._HasRecieve)
             {
-                var orderNum = _JudgeManager.CustomerInfo[_SelectManager.CustomerNum]._OrderNum;
+                var orderNum = _CustomerManager.CustomerInfo[_SelectManager.CustomerNum]._OrderNum;
                 var orderProduct = RecipeList.Menu[orderNum];
 
                 //注文番号で商品を登録する
@@ -97,33 +97,29 @@ public class RecipeUIScript : MonoBehaviour
                 _HeightNum = CalcHeight(orderProduct.recipe);
                 _HeightText.text = _HeightNum.ToString();
                 _ValueText.text = "$" + orderProduct.value.ToString("N2");
-                if(RecipeList.Menu[orderNum].type == RecipeList.ProductType.RANDOM) _HeightText.text = "?";
+                if (RecipeList.Menu[orderNum].type == RecipeList.ProductType.RANDOM) _HeightText.text = "?";
 
                 //食材の高さによって色を変える
-                if(_HeightNum >= 15)_HeightText.color = new Color(200 / 255f, 20 / 255f, 17 / 255f);
-                else if(_HeightNum >= 7)_HeightText.color = new Color(255 / 255f, 239 / 255f,0);
-                else _HeightText.color = new Color(0,0,0);
-                _IngredientText.text = "\nIngredients"; 
+                if (_HeightNum >= 15) _HeightText.color = new Color(200 / 255f, 20 / 255f, 17 / 255f);
+                else if (_HeightNum >= 7) _HeightText.color = new Color(255 / 255f, 239 / 255f, 0);
+                else _HeightText.color = new Color(0, 0, 0);
+                _IngredientText.text = "\nIngredients";
             }
-            else 
+            else
             {
-                _OrderNum.text = "Comming \nSoon...";
-                _ProductName.text = "\nNo Guest";
-                _ProductImage.sprite = RecipeList._Empty;
-                _HeightText.text = "-";
-                _ValueText.text = "$----";
-                _HeightText.color = new Color(0,0,0);
+                ChangeUIToNoCustomer();
             }
         }
 
-            
+
     }
 
-    int CalcHeight(int [] array)
+    int CalcHeight(int[] array)
     {
         int i;
-        for(i = 0; i < array.Length; i++){
-            if(array[i] == 0)return i;
+        for (i = 0; i < array.Length; i++)
+        {
+            if (array[i] == 0) return i;
         }
         return i;
     }
@@ -134,4 +130,18 @@ public class RecipeUIScript : MonoBehaviour
         //できればコルーチンも掛け合わせたいところ
     }
 
+    void ChangeUIToNoCustomer()
+    {
+        _OrderNum.text = "Comming \nSoon...";
+        _ProductName.text = "\nNo Guest";
+        _ProductImage.sprite = RecipeList._Empty;
+        _HeightText.text = "-";
+        _ValueText.text = "$----";
+        _HeightText.color = new Color(0, 0, 0);
+    }
+
+    IEnumerator UpdateUI()
+    {
+        yield return null;
+    }
 }
