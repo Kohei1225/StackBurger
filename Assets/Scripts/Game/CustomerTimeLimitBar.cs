@@ -123,52 +123,6 @@ public class CustomerTimeLimitBar : MonoBehaviour
                 if(_GValue == 0)_Green = 0;
                 else _Green = _GValue / 255f;
             }
-
-            if (!_ActiveSlider) return;
-
-            return;
-
-            //客がいなくなる時
-            if(_CustomerInfo._HasRecieve)
-            {
-                _Slider.value = 0;
-            }
-
-            //カウントしていい状態だったら
-            if(_CustomerInfo.CanReceiveFood)
-            {
-                _Slider.value = _CustomerInfo.MainTimer.RateOfRemainingTime;
-                    
-                //時間切れになったら
-                if(_Slider.value <= 0 && !_Flag)
-                {
-                    _CustomerInfo.timeOver = true;
-                    _Flag = true;
-                    _RValue = R_INI;//初期化
-                    _GValue = G_INI;//初期化      
-                    _RStop = false;
-                }
-                //else ChangeColor();
-            }            
-
-            //客がまだ来てない時
-            else if(!_CustomerInfo._HasVisit)
-            {
-                //スライダーとかの情報をセットしておく
-                var orderNum = _CustomerInfo._OrderNum;
-                var recipe = RecipeList.Menu[orderNum].recipe;
-                var foodHeight = RecipeList.CalcHeight(recipe);
-                if (RecipeList.Menu[orderNum].type != RecipeList.ProductType.RANDOM)
-                {
-                    //_Slider.maxValue = foodHeight * (_MultiLevel + _GameManager._CustomerNum * 2);
-                }
-                else
-                {
-                    //_Slider.maxValue = 10 * (_MultiLevel + _GameManager._CustomerNum * 2);
-                }
-                _Slider.value = _Slider.maxValue;
-            }
-                
             //R:60->231 G:231->0
         }       
     }
@@ -184,17 +138,6 @@ public class CustomerTimeLimitBar : MonoBehaviour
         if(_GameManager._CustomerNum >= _Number)return true;
 
         return false;
-    }
-
-    /// <summary> 自分が担当する客の情報をセットする </summary>
-    void SetCustomer()
-    {
-        _CustomerInfo = _CustomerManager.CustomerInfo[_Number - 1];
-        
-        _RStop = false;
-        _ChangeChip = 2;
-        _ChangeCustomerFlag = false;
-        _Flag = false;
     }
 
     public void InitializeValue()
@@ -218,6 +161,7 @@ public class CustomerTimeLimitBar : MonoBehaviour
     }
 
     /// <summary> スライダーの進み加減に応じて色を変える </summary>
+    /// <param name="rateOfRemainingTime"> 残り時間の割合 </param>
     void ChangeColor(float rateOfRemainingTime)
     {
         float rate_of_total_range = rateOfRemainingTime * _TotalRGBRange;;
@@ -238,36 +182,5 @@ public class CustomerTimeLimitBar : MonoBehaviour
         _Green = GValue / 255f;
 
         _FillImage.color = new Color(RValue/255f , GValue/255f, 0);
-
-        /*
-        //赤の処理
-        if(_RValue == R_LIMIT){
-            if (_ForDebug) Debug.Log("Red()");
-            if(R_LIMIT == 0)_Red = 0;
-            else _RValue = R_LIMIT;
-        }
-        else if(!_RStop){
-            _RValue = _number + R_INI;
-            _Red = _RValue / 255f;
-        } 
-        else _RValue = R_LIMIT;
-        if(_RValue >= R_LIMIT)_RStop = true;
-        
-
-        //緑の処理
-        if(_number >= _RRange){
-            if(_GValue == G_LIMIT)
-            {
-                if (_ForDebug) Debug.Log("Green()");
-                if(G_LIMIT == 0)_Green = 0;
-                else _GValue = G_LIMIT;
-            }
-            else {
-                _GValue = G_INI - (_number - _RRange);
-                _Green = _GValue / 255f;
-            }   
-        }
-        */
-
     }
 }
