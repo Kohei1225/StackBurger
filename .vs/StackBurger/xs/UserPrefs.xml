@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{560D3065-1C19-F8AB-1038-31296A3C6F25}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Game/CustomerScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Game/CustomerManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Game/RecipeList.cs" Line="19" Column="14" />
-      <File FileName="Assets/Scripts/Game/CustomerScript.cs" Line="271" Column="1" />
-      <File FileName="Assets/Scripts/CoroutineTest.cs" Line="5" Column="25" />
-      <File FileName="Assets/Scripts/Game/CustomerManager.cs" Line="153" Column="42" />
-      <File FileName="Assets/Scripts/Game/SelectCustomer.cs" Line="29" Column="101" />
+      <File FileName="Assets/Scripts/Game/RecipeUIScript.cs" Line="84" Column="38" />
+      <File FileName="Assets/Scripts/Game/RecipeList.cs" />
+      <File FileName="Assets/Scripts/Game/CustomerScript.cs" />
+      <File FileName="Assets/Scripts/Game/CustomerManager.cs" Line="99" Column="22" />
+      <File FileName="Assets/Scripts/Game/SelectCustomer.cs" />
       <File FileName="Assets/Scripts/Menu/DayChangeScript.cs" />
       <File FileName="Assets/Scripts/Button/ButtonFunctions.cs" />
       <File FileName="Assets/Scripts/Option/ControlSound.cs" />
@@ -15,9 +15,8 @@
       <File FileName="Assets/Scripts/Title/OpeningScript.cs" />
       <File FileName="Assets/Scripts/Game/StackScript.cs" />
       <File FileName="Assets/Scripts/Game/TimeLimitScript.cs" />
-      <File FileName="Assets/Scripts/Game/ChipTextScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Game/RecipeUIScript.cs" />
-      <File FileName="Assets/Scripts/Game/GameSystem.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Game/ChipTextScript.cs" />
+      <File FileName="Assets/Scripts/Game/GameSystem.cs" />
       <File FileName="Assets/Scripts/Game/TimerScript.cs" />
       <File FileName="Assets/Scripts/Menu/CalenderManager.cs" />
       <File FileName="Assets/Scripts/Game/MoveOfFood.cs" />
@@ -50,7 +49,7 @@
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
                 <Node name="Game" expanded="True">
-                  <Node name="CustomerScript.cs" selected="True" />
+                  <Node name="RecipeUIScript.cs" selected="True" />
                 </Node>
                 <Node name="Option" expanded="True" />
               </Node>
@@ -62,7 +61,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="7111050c-780e-4702-9c96-14b80a8c6efd" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="efa876de-db6b-4277-bb57-e2f593d52c44" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
