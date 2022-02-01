@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary> 客をまとめて管理するクラス </summary>
-public class CustomerManager : MonoBehaviour
+public class CustomerManager : SingletonMonoBehaviour<CustomerManager>
 {
     private GameObject _Managers;
     private GameSystem _GameManager;
@@ -37,7 +37,7 @@ public class CustomerManager : MonoBehaviour
     /// <summary> お客さんを補充する時の判定 </summary>
     public bool _IsLeaveCustomer;
     /// <summary> 一番最初の処理をしたかどうか </summary>
-    public bool HasFinishFirst{get; private set;} = true;
+    public bool HasFinishFirst{get; private set;} = false;
     /// <summary> 登場できるお客さんの数 </summary>
     private int _CustomerMax;
 
@@ -60,6 +60,11 @@ public class CustomerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(Instance != this)
+        {
+            Destroy(gameObject);
+        }
+
         InitializeEmotionArray();
         _Managers = GameObject.Find("Managers");
         _GameManager = _Managers.GetComponent<GameSystem>();
@@ -76,7 +81,7 @@ public class CustomerManager : MonoBehaviour
         if(_GameManager._IsStart)
         {
             //ゲームが始まって一番最初の処理
-            if(HasFinishFirst)
+            if(!HasFinishFirst)
             {
                 _CurrnetCustomers = new GameObject[_GameManager._CustomerNum];
                 _CustomerInfo = new CustomerScript[_GameManager._CustomerNum];
@@ -85,7 +90,7 @@ public class CustomerManager : MonoBehaviour
                     _TimeLimitBars[i] = _CustomersSliders[i].GetComponent<CustomerTimeLimitBar>();
                     CallCustomer(i);
                 }
-                HasFinishFirst = false;  
+                HasFinishFirst = true;  
             }
 
             //お客さんが消えたら

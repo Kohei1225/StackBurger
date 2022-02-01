@@ -1491,8 +1491,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f57f14efb8364428abac1ec8c77d809a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ForDebug: 0
-  _FillImage: {fileID: 0}
 --- !u!1 &585031019
 GameObject:
   m_ObjectHideFlags: 0
@@ -2164,8 +2162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f57f14efb8364428abac1ec8c77d809a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ForDebug: 0
-  _FillImage: {fileID: 0}
 --- !u!1001 &716346582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3010,7 +3006,7 @@ MonoBehaviour:
   - {fileID: 0}
   _Empty: {fileID: 21300000, guid: 9ab681c1141df49148263483121ddd2d, type: 3}
   _SelectManager: {fileID: 195694993}
-  _JudgeManager: {fileID: 1005858044}
+  _CustomerManager: {fileID: 1005858044}
   _GameManager: {fileID: 1005858047}
   _OrderNum: {fileID: 2091389925}
   _ProductName: {fileID: 496042123}
@@ -6300,8 +6296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f57f14efb8364428abac1ec8c77d809a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ForDebug: 1
-  _FillImage: {fileID: 0}
 --- !u!1 &1578613875
 GameObject:
   m_ObjectHideFlags: 0
