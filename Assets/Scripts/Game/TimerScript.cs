@@ -18,9 +18,14 @@ public class TimerScript
         get { return _CurrentTime >= _TimeLimit; }
     }
 
+    public float RateOfRemainingTime
+    {
+        get { return 1 - _CurrentTime / _TimeLimit; }
+    }
+
     public float RateOfTime
     {
-        get { return (_TimeLimit - _CurrentTime) / _TimeLimit; }
+        get { return _CurrentTime / _TimeLimit; }
     }
 
     public  float CurrentTime
