@@ -35,7 +35,9 @@ public class CustomerTimeLimitBar : MonoBehaviour
     private float _RRange;
     private float _GRange;
     private bool _RStop = false;
-    private int _MultiLevel = 8;    
+    private int _MultiLevel = 8;
+    private bool _HasReachRLimit = false;
+    private bool _HasReachGLimit = false;
 
     /// <summary> RGBのRの最大値 </summary>
     const float R_LIMIT = 231;
@@ -53,6 +55,7 @@ public class CustomerTimeLimitBar : MonoBehaviour
             if(value >= R_LIMIT)
             {
                 _RValue = R_LIMIT;
+                _HasReachRLimit = true;
                 return;
             }
             if(value <= R_INI)
@@ -73,6 +76,7 @@ public class CustomerTimeLimitBar : MonoBehaviour
             if (value <= G_LIMIT)
             {
                 _GValue = G_LIMIT;
+                _HasReachGLimit = true;
                 return;
             }
             if (value >= G_INI)
@@ -223,6 +227,9 @@ public class CustomerTimeLimitBar : MonoBehaviour
         _ChangeChip = 2;
         _ChangeCustomerFlag = false;
         _Flag = false;
+
+        _HasReachRLimit = false;
+        _HasReachGLimit = false;
     }
 
     /// <summary> スライダーの進み加減に応じて色を変える </summary>
@@ -233,8 +240,17 @@ public class CustomerTimeLimitBar : MonoBehaviour
         _number = ( 1 - (_Slider.value / _Slider.maxValue) ) * _TotalRGBRange;
 
         //if (_ForDebug) Debug.Log("number:" + _number);
-        _RValue = _number;
+        //_RValue = _number;
 
+        if(!_HasReachRLimit)RValue = _number + R_INI;
+
+        else if (!_HasReachGLimit) GValue = G_INI - (_number - _RRange);
+
+        if (_ForDebug) Debug.Log("R:" + RValue + " G:" + GValue);
+        _Red = RValue / 255f;
+        _Green = GValue / 255f;
+
+        /*
         //赤の処理
         if(_RValue == R_LIMIT){
             if (_ForDebug) Debug.Log("Red()");
@@ -262,6 +278,7 @@ public class CustomerTimeLimitBar : MonoBehaviour
                 _Green = _GValue / 255f;
             }   
         }
+        */
 
     }
 }
