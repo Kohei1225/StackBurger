@@ -194,12 +194,12 @@ public class StackScript : MonoBehaviour
         }
 
         //Enterで客に提供する
-        if(GameManager._IsStart && Input.GetKeyDown(KeyCode.Return) && isPlate && !ThrowManager.movedish && _CustomerScript.CustomerInfo[SelectCustomer.CustomerNum].CanReceiveFood)
+        if(GameManager._IsStart && Input.GetKeyDown(KeyCode.Return) && isPlate && !ThrowManager.movedish && _CustomerScript.CustomerInfo[SelectCustomer._CustomerNum].CanReceiveFood)
         {
             if (dish[0] != 0)
             {
-                _CustomerScript.CustomerInfo[SelectCustomer.CustomerNum].buy = true;
-                _CustomerScript.CustomerInfo[SelectCustomer.CustomerNum].CheckReceivedProduct(dish);
+                _CustomerScript.CustomerInfo[SelectCustomer._CustomerNum].buy = true;
+                _CustomerScript.CustomerInfo[SelectCustomer._CustomerNum].CheckReceivedProduct(dish);
             }
             abandanFlag = true;
         }

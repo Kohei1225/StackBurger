@@ -82,12 +82,12 @@ public class RecipeUIScript : MonoBehaviour
         if (_GameManager._IsStart)
         {
             if (!_CustomerManager.HasFinishFirst) return;
-            var currentCustomer = _CustomerManager.CustomerInfo[_SelectManager.CustomerNum];
+            var currentCustomer = _CustomerManager.CustomerInfo[_SelectManager._CustomerNum];
             if (!currentCustomer) return;
 
             if (currentCustomer._HasVisit && !currentCustomer._HasRecieve)
             {
-                var orderNum = _CustomerManager.CustomerInfo[_SelectManager.CustomerNum]._OrderNum;
+                var orderNum = _CustomerManager.CustomerInfo[_SelectManager._CustomerNum]._OrderNum;
                 var orderProduct = RecipeList.Menu[orderNum];
 
                 //注文番号で商品を登録する

@@ -5,17 +5,16 @@ using UnityEngine;
 /// <summary> お客さんを選択するスクリプト </summary>
 public class SelectCustomer : MonoBehaviour
 {
-    CustomerManager _CustomerManager;
-    GameSystem GameManager;
-    public int CustomerNum = 1;
+    private CustomerManager _CustomerManager;
+    private GameSystem _GameManager;
+    public int _CustomerNum { get; private set; } = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        _CustomerManager = GameObject.Find("Managers").GetComponent<CustomerManager>();
-        GameManager = GameObject.Find("Managers").GetComponent<GameSystem>();
-        CustomerNum = 1;
-        //if(GameManager.level == 1)CustomerNum = 0;
+        _CustomerManager = FindObjectOfType<CustomerManager>().GetComponent<CustomerManager>();
+        _GameManager = FindObjectOfType<GameSystem>().GetComponent<GameSystem>();
+        _CustomerNum = 1;
     }
 
     // Update is called once per frame
@@ -23,13 +22,13 @@ public class SelectCustomer : MonoBehaviour
     {
         if (!Input.GetKey(KeyCode.RightShift) && !Input.GetKey(KeyCode.LeftShift)) return;
 
-        if(GameManager._IsStart && !_CustomerManager.HasFinishFirst)
+        if(_GameManager._IsStart && _CustomerManager.HasFinishFirst)
         {
-            if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))CustomerNum--;
-            else if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))CustomerNum++;
-            if(CustomerNum == -1)CustomerNum = _CustomerManager.CurrentCustomers.Length - 1;
-            else if(CustomerNum == _CustomerManager.CurrentCustomers.Length)CustomerNum = 0;
-            gameObject.transform.position = new Vector3 (_CustomerManager.CurrentCustomers[CustomerNum].transform.position.x, 3.9f, 10);
+            if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))_CustomerNum--;
+            else if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))_CustomerNum++;
+            if(_CustomerNum == -1)_CustomerNum = _CustomerManager.CurrentCustomers.Length - 1;
+            else if(_CustomerNum == _CustomerManager.CurrentCustomers.Length)_CustomerNum = 0;
+            gameObject.transform.position = new Vector3 (_CustomerManager.CurrentCustomers[_CustomerNum].transform.position.x, 3.9f, 10);
         }
 
     }
