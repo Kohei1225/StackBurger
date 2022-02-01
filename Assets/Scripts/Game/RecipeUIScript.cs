@@ -45,7 +45,7 @@ public class RecipeUIScript : MonoBehaviour
 
     };
     [SerializeField] private SelectCustomer _SelectManager;
-    [SerializeField] private CustomerManager _JudgeManager;
+    [SerializeField] private CustomerManager _CustomerManager;
     [SerializeField] private GameSystem _GameManager;
     [SerializeField] private Text _OrderNum;
     [SerializeField] private Text _ProductName;
@@ -81,13 +81,13 @@ public class RecipeUIScript : MonoBehaviour
     {
         if(_GameManager._IsStart)
         {
-            if (!_JudgeManager.CustomerInfo[_SelectManager.CustomerNum]) return ;
-            var currentCustomer = _JudgeManager.CustomerInfo[_SelectManager.CustomerNum];
+            if (!_CustomerManager.HasFinishFirst) return;
+            var currentCustomer = _CustomerManager.CustomerInfo[_SelectManager.CustomerNum];
             if (!currentCustomer) return;
 
-            if(!_JudgeManager.HasFinishFirst && currentCustomer._HasVisit && !currentCustomer._HasRecieve)
+            if(currentCustomer._HasVisit && !currentCustomer._HasRecieve)
             {
-                var orderNum = _JudgeManager.CustomerInfo[_SelectManager.CustomerNum]._OrderNum;
+                var orderNum = _CustomerManager.CustomerInfo[_SelectManager.CustomerNum]._OrderNum;
                 var orderProduct = RecipeList.Menu[orderNum];
 
                 //注文番号で商品を登録する
@@ -107,12 +107,7 @@ public class RecipeUIScript : MonoBehaviour
             }
             else 
             {
-                _OrderNum.text = "Comming \nSoon...";
-                _ProductName.text = "\nNo Guest";
-                _ProductImage.sprite = RecipeList._Empty;
-                _HeightText.text = "-";
-                _ValueText.text = "$----";
-                _HeightText.color = new Color(0,0,0);
+                ChangeUIToNoCustomer();
             }
         }
 
@@ -134,4 +129,18 @@ public class RecipeUIScript : MonoBehaviour
         //できればコルーチンも掛け合わせたいところ
     }
 
+    void ChangeUIToNoCustomer()
+    {
+        _OrderNum.text = "Comming \nSoon...";
+        _ProductName.text = "\nNo Guest";
+        _ProductImage.sprite = RecipeList._Empty;
+        _HeightText.text = "-";
+        _ValueText.text = "$----";
+        _HeightText.color = new Color(0,0,0);
+    }
+
+    IEnumerator UpdateUI()
+    {
+        yield return null;
+    }
 }

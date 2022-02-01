@@ -37,7 +37,7 @@ public class CustomerManager : MonoBehaviour
     /// <summary> お客さんを補充する時の判定 </summary>
     public bool _IsLeaveCustomer;
     /// <summary> 一番最初の処理をしたかどうか </summary>
-    public bool HasFinishFirst{get; private set;} = true;
+    public bool HasFinishFirst{get; private set;} = false;
     /// <summary> 登場できるお客さんの数 </summary>
     private int _CustomerMax;
 
@@ -76,7 +76,7 @@ public class CustomerManager : MonoBehaviour
         if(_GameManager._IsStart)
         {
             //ゲームが始まって一番最初の処理
-            if(HasFinishFirst)
+            if(!HasFinishFirst)
             {
                 _CurrnetCustomers = new GameObject[_GameManager._CustomerNum];
                 _CustomerInfo = new CustomerScript[_GameManager._CustomerNum];
@@ -86,7 +86,7 @@ public class CustomerManager : MonoBehaviour
                     _TimeLimitBar[i] = _CustomersSliders[i].GetComponent<CustomerTimeLimitBar>();
                     _TimeLimitBar[i]._ChangeCustomerFlag = true;
                 }
-                HasFinishFirst = false;  
+                HasFinishFirst = true;  
             }
 
             //お客さんが消えたら

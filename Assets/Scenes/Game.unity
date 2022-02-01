@@ -3010,7 +3010,7 @@ MonoBehaviour:
   - {fileID: 0}
   _Empty: {fileID: 21300000, guid: 9ab681c1141df49148263483121ddd2d, type: 3}
   _SelectManager: {fileID: 195694993}
-  _JudgeManager: {fileID: 1005858044}
+  _CustomerManager: {fileID: 1005858044}
   _GameManager: {fileID: 1005858047}
   _OrderNum: {fileID: 2091389925}
   _ProductName: {fileID: 496042123}

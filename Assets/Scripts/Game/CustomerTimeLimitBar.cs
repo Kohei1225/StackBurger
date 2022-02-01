@@ -77,6 +77,7 @@ public class CustomerTimeLimitBar : MonoBehaviour
                 else _Red = _RValue / 255f;
                 if(_GValue == 0)_Green = 0;
                 else _Green = _GValue / 255f;
+                return;
             }
 
             if(_ActiveSlider)
