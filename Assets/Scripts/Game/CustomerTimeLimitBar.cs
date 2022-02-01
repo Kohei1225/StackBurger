@@ -14,6 +14,7 @@ public class CustomerTimeLimitBar : MonoBehaviour
 
     public Image _FillImage;
     public bool _ChangeCustomerFlag = false;
+    public bool _ForDebug = false;
 
     private bool _ActiveSlider = false;
     private int _Number = 5;
@@ -22,7 +23,7 @@ public class CustomerTimeLimitBar : MonoBehaviour
 
 
     private int _ChangeChip = 2;        //3からカウントしていく
-    private float _CountValue;           //カウントしていく単位
+    private float _TotalRGBRange;           //カウントしていく単位
     /// <summary> 255で割る前の実際の値 </summary>
     private float _RValue;
     /// <summary> 255で割る前の実際の値 </summary>
@@ -37,13 +38,53 @@ public class CustomerTimeLimitBar : MonoBehaviour
     private int _MultiLevel = 8;    
 
     /// <summary> RGBのRの最大値 </summary>
-    const float RLIMIT = 231;
+    const float R_LIMIT = 231;
     /// <summary> RGBのGの最大値 </summary>
-    const float GLIMIT = 0;
+    const float G_LIMIT = 0;
     /// <summary> RGBのRの初期値 </summary>
-    const float RSHOKI = 60;
+    const float R_INI = 60;
     /// <summary> RGBのGの初期値 </summary>
-    const float GSHOKI = 231;               
+    const float G_INI = 231;               
+
+    private float RValue
+    {
+        set
+        {
+            if(value >= R_LIMIT)
+            {
+                _RValue = R_LIMIT;
+                return;
+            }
+            if(value <= R_INI)
+            {
+                _RValue = R_INI;
+                return;
+            }
+
+            _RValue = value;
+        }
+        get { return _RValue; }
+    }
+
+    private float GValue
+    {
+        set
+        {
+            if (value <= G_LIMIT)
+            {
+                _GValue = G_LIMIT;
+                return;
+            }
+            if (value >= G_INI)
+            {
+                _GValue = G_INI;
+                return;
+            }
+
+            _GValue = value;
+        }
+        get { return _GValue; }
+    }
 
     // Start is called before the _first frame update
     void Start()
@@ -52,11 +93,11 @@ public class CustomerTimeLimitBar : MonoBehaviour
         _SelectCustomerManager = GameObject.Find("CustomerPlate").GetComponent<SelectCustomer>();
         _CustomerManager = GameObject.Find("Managers").GetComponent<CustomerManager>();
         _Slider = GetComponent<Slider>();
-        _RValue = RSHOKI;//231まで171カウントできる
-        _GValue = GSHOKI;//0まで231カウントできる
-        _RRange = Mathf.Abs(RLIMIT - _RValue);
-        _GRange = Mathf.Abs(GLIMIT - _GValue);
-        _CountValue = _RRange + _GRange;
+        _RValue = R_INI;//|231 - 60| = 171カウント
+        _GValue = G_INI;//|0 - 231| = 231カウント
+        _RRange = Mathf.Abs(R_LIMIT - R_INI);
+        _GRange = Mathf.Abs(G_LIMIT - G_INI);
+        _TotalRGBRange = _RRange + _GRange;
     }
 
     // Update is called once per frame
@@ -91,15 +132,15 @@ public class CustomerTimeLimitBar : MonoBehaviour
                 //カウントしていい状態だったら
                 if(_CustomerInfo.CanReceiveFood)
                 {
-                    _Slider.value = _CustomerInfo.MainTimer.RateOfTime;
+                    _Slider.value = _CustomerInfo.MainTimer.RateOfRemainingTime;
                     
                     //時間切れになったら
                     if(_Slider.value <= 0 && !_Flag)
                     {
                         _CustomerInfo.timeOver = true;
                         _Flag = true;
-                        _RValue = RSHOKI;//初期化
-                        _GValue = GSHOKI;//初期化      
+                        _RValue = R_INI;//初期化
+                        _GValue = G_INI;//初期化      
                         _RStop = false;
                     }
                     else ChangeColor();
@@ -171,13 +212,13 @@ public class CustomerTimeLimitBar : MonoBehaviour
     void SetCustomer()
     {
         _CustomerInfo = _CustomerManager.CustomerInfo[_Number - 1];
-        _RValue = RSHOKI;//初期化
-        _GValue = GSHOKI;//初期化
+        _RValue = R_INI;//初期化
+        _GValue = G_INI;//初期化
 
-        _Red = RSHOKI / 255f;    //
-        _Green = GSHOKI / 255f;
+        _Red = R_INI / 255f;    //
+        _Green = G_INI / 255f;
 
-        _FillImage.color = new Color(RSHOKI/255f, GSHOKI/255f, 0);
+        _FillImage.color = new Color(R_INI/255f, G_INI/255f, 0);
         _RStop = false;
         _ChangeChip = 2;
         _ChangeCustomerFlag = false;
@@ -188,32 +229,36 @@ public class CustomerTimeLimitBar : MonoBehaviour
     void ChangeColor()
     {
         float _number;
-        _number = ( 1 - (_Slider.value / _Slider.maxValue) ) * _CountValue;
+        //バーの進んだ割合
+        _number = ( 1 - (_Slider.value / _Slider.maxValue) ) * _TotalRGBRange;
 
+        //if (_ForDebug) Debug.Log("number:" + _number);
         _RValue = _number;
 
         //赤の処理
-        if(_RValue == RLIMIT){
-            if(RLIMIT == 0)_Red = 0;
-            else _RValue = RLIMIT;
+        if(_RValue == R_LIMIT){
+            if (_ForDebug) Debug.Log("Red()");
+            if(R_LIMIT == 0)_Red = 0;
+            else _RValue = R_LIMIT;
         }
         else if(!_RStop){
-            _RValue = _number + RSHOKI;
+            _RValue = _number + R_INI;
             _Red = _RValue / 255f;
         } 
-        else _RValue = RLIMIT;
-        if(_RValue >= RLIMIT)_RStop = true;
+        else _RValue = R_LIMIT;
+        if(_RValue >= R_LIMIT)_RStop = true;
         
 
         //緑の処理
         if(_number >= _RRange){
-            if(_GValue == GLIMIT)
+            if(_GValue == G_LIMIT)
             {
-                if(GLIMIT == 0)_Green = 0;
-                else _GValue = GLIMIT;
+                if (_ForDebug) Debug.Log("Green()");
+                if(G_LIMIT == 0)_Green = 0;
+                else _GValue = G_LIMIT;
             }
             else {
-                _GValue = GSHOKI - (_number - _RRange);
+                _GValue = G_INI - (_number - _RRange);
                 _Green = _GValue / 255f;
             }   
         }

@@ -1493,6 +1493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _FillImage: {fileID: 0}
   _ChangeCustomerFlag: 0
+  _ForDebug: 0
 --- !u!1 &585031019
 GameObject:
   m_ObjectHideFlags: 0
@@ -2166,6 +2167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _FillImage: {fileID: 0}
   _ChangeCustomerFlag: 0
+  _ForDebug: 0
 --- !u!1001 &716346582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6298,6 +6300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _FillImage: {fileID: 0}
   _ChangeCustomerFlag: 0
+  _ForDebug: 1
 --- !u!1 &1578613875
 GameObject:
   m_ObjectHideFlags: 0

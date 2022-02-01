@@ -201,8 +201,8 @@ public class CustomerScript : MonoBehaviour
         var product = RecipeList.Menu[_OrderNum];
         float product_value = product.value;
         float product_height = RecipeList.CalcHeight(product.recipe);
-        Debug.Log("value:" + product_value + "\nheight:" + product_height + "\nrate:" + _CustomerMainTimer.RateOfTime);
-        float chip = product_value + (product_value + product_height) * _CustomerMainTimer.RateOfTime;
+        Debug.Log("value:" + product_value + "\nheight:" + product_height + "\nrate:" + _CustomerMainTimer.RateOfRemainingTime);
+        float chip = product_value + (product_value + product_height) * _CustomerMainTimer.RateOfRemainingTime;
 
         return chip ;
     }
