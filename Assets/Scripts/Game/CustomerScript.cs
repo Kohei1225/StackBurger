@@ -43,6 +43,7 @@ public class CustomerScript : MonoBehaviour
 
     [SerializeField]private float _tall;              //身長 1:低い　2:普通　3:高い
     [SerializeField]private GameObject _EmotionMark;  //感情を表すマークのオブジェクト
+    [SerializeField]private CustomerTimeLimitBar _TimeLimitBar = null;
 
     const int EMOTIONRIMIT = 100;       //感情マークの表示時間
 
@@ -57,6 +58,12 @@ public class CustomerScript : MonoBehaviour
     public TimerScript MainTimer
     {
         get { return _CustomerMainTimer; }
+    }
+
+    public CustomerTimeLimitBar TimeLimitBar
+    {
+        set { _TimeLimitBar = value; }
+        get { return _TimeLimitBar; }
     }
 
     void Awake()
@@ -99,9 +106,12 @@ public class CustomerScript : MonoBehaviour
     {
         if (!_GameManager._IsStart) return;
 
+        //Debug.Log(_TimeLimitBar);
+
         if(_HasRecieve)
         {
             _BeforeLeaveStoreTimer.UpdateTimer();
+            
             if(_BeforeLeaveStoreTimer.IsTimeUp)
             {
                 LeaveStore();
@@ -116,6 +126,7 @@ public class CustomerScript : MonoBehaviour
         }
 
         _CustomerMainTimer.UpdateTimer();
+        _TimeLimitBar.UpdateTimeBar(_CustomerMainTimer.RateOfRemainingTime);
         if(_CustomerMainTimer.IsTimeUp)
         {
             _HasRecieve = true;
@@ -216,6 +227,7 @@ public class CustomerScript : MonoBehaviour
         if (MoveTo(pos, speed))
         {
             _HasVisit = true;
+            _TimeLimitBar.InitializeValue();
         }
         
     }
@@ -392,7 +404,9 @@ public class CustomerScript : MonoBehaviour
 
         _OrderNum = Random.Range(0, _GameManager._Range);
         var recipe = RecipeList.Menu[_OrderNum].recipe;
-        _CustomerMainTimer.ResetTimer(_CustomerManager.GetWaitTime(RecipeList.CalcHeight(recipe)));
+        var recipe_height = RecipeList.CalcHeight(recipe);
+        var wait_time = _CustomerManager.GetWaitTime(recipe_height);
+        _CustomerMainTimer.ResetTimer(wait_time);
         _HasOrder = true;
     }
 

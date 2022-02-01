@@ -8,7 +8,7 @@ public class CustomerManager : MonoBehaviour
     private GameObject _Managers;
     private GameSystem _GameManager;
     private MoveOfFood _ThrowManager;
-    private CustomerTimeLimitBar[] _TimeLimitBar = new CustomerTimeLimitBar[3];
+    [SerializeField]private CustomerTimeLimitBar[] _TimeLimitBars = new CustomerTimeLimitBar[3];
     [SerializeField] AnimationCurve _WaitTimeGlaph;
 
     /// <summary> お客さんの配列(全部) </summary>
@@ -82,9 +82,10 @@ public class CustomerManager : MonoBehaviour
                 _CustomerInfo = new CustomerScript[_GameManager._CustomerNum];
                 for(int i = 0; i < _GameManager._CustomerNum; i++)
                 {
+               
+                    _TimeLimitBars[i] = _CustomersSliders[i].GetComponent<CustomerTimeLimitBar>();
+                    _TimeLimitBars[i]._ChangeCustomerFlag = true;
                     CallCustomer(i);
-                    _TimeLimitBar[i] = _CustomersSliders[i].GetComponent<CustomerTimeLimitBar>();
-                    _TimeLimitBar[i]._ChangeCustomerFlag = true;
                 }
                 HasFinishFirst = false;  
             }
@@ -105,7 +106,7 @@ public class CustomerManager : MonoBehaviour
                         //メニューを投げる食材を更新してもらう
                         _ThrowManager.reset = true;
                         //時間制限をリセットする
-                        _TimeLimitBar[i]._ChangeCustomerFlag = true;
+                        _TimeLimitBars[i]._ChangeCustomerFlag = true;
                     }
                 }
                 _IsLeaveCustomer = false;
@@ -122,6 +123,8 @@ public class CustomerManager : MonoBehaviour
 
         _CurrnetCustomers[Num] = Instantiate( customer, pos, Quaternion.identity);
         CustomerInfo[Num] = _CurrnetCustomers[Num].GetComponent<CustomerScript>();
+        CustomerInfo[Num].TimeLimitBar = _TimeLimitBars[Num];
+        Debug.Log(CustomerInfo[Num].TimeLimitBar);
         if(!_HasCallFirstCustomer)
         {
             var product_type = RecipeList.ProductType.BURGER;

@@ -124,78 +124,52 @@ public class CustomerTimeLimitBar : MonoBehaviour
                 else _Green = _GValue / 255f;
             }
 
-            if(_ActiveSlider)
+            if (!_ActiveSlider) return;
+
+            return;
+
+            //客がいなくなる時
+            if(_CustomerInfo._HasRecieve)
             {
+                _Slider.value = 0;
+            }
 
-                if(_ChangeCustomerFlag)SetCustomer();
-                //客がいなくなる時
-                if(_CustomerInfo._HasRecieve)
-                {
-                    _Slider.value = 0;
-                }
-                //カウントしていい状態だったら
-                if(_CustomerInfo.CanReceiveFood)
-                {
-                    _Slider.value = _CustomerInfo.MainTimer.RateOfRemainingTime;
+            //カウントしていい状態だったら
+            if(_CustomerInfo.CanReceiveFood)
+            {
+                _Slider.value = _CustomerInfo.MainTimer.RateOfRemainingTime;
                     
-                    //時間切れになったら
-                    if(_Slider.value <= 0 && !_Flag)
-                    {
-                        _CustomerInfo.timeOver = true;
-                        _Flag = true;
-                        _RValue = R_INI;//初期化
-                        _GValue = G_INI;//初期化      
-                        _RStop = false;
-                    }
-                    else ChangeColor();
-                }            
-
-                //客がまだ来てない時
-                else if(!_CustomerInfo._HasVisit)
+                //時間切れになったら
+                if(_Slider.value <= 0 && !_Flag)
                 {
-                    //スライダーとかの情報をセットしておく
-                    var orderNum = _CustomerInfo._OrderNum;
-                    var recipe = RecipeList.Menu[orderNum].recipe;
-                    var foodHeight = RecipeList.CalcHeight(recipe);
-                    if (RecipeList.Menu[orderNum].type != RecipeList.ProductType.RANDOM)
-                    {
-                        //_Slider.maxValue = foodHeight * (_MultiLevel + _GameManager._CustomerNum * 2);
-                    }
-                    else
-                    {
-                        //_Slider.maxValue = 10 * (_MultiLevel + _GameManager._CustomerNum * 2);
-                    }
-                    _Slider.value = _Slider.maxValue;
+                    _CustomerInfo.timeOver = true;
+                    _Flag = true;
+                    _RValue = R_INI;//初期化
+                    _GValue = G_INI;//初期化      
+                    _RStop = false;
                 }
+                //else ChangeColor();
+            }            
 
-                _FillImage.color = new Color(_Red , _Green, 0);
-
-                //色の変更
-                //時間がない(赤)
-                if(_Slider.value < _Slider.maxValue / 3f)
+            //客がまだ来てない時
+            else if(!_CustomerInfo._HasVisit)
+            {
+                //スライダーとかの情報をセットしておく
+                var orderNum = _CustomerInfo._OrderNum;
+                var recipe = RecipeList.Menu[orderNum].recipe;
+                var foodHeight = RecipeList.CalcHeight(recipe);
+                if (RecipeList.Menu[orderNum].type != RecipeList.ProductType.RANDOM)
                 {
-                    //FillImage.color = new Color(231 / 255f, 0, 0);
-                    if(_ChangeChip == 1)
-                    {
-                        _CustomerInfo.chip -= _CustomerInfo.chipLevel;
-                        _ChangeChip--;
-                    }
+                    //_Slider.maxValue = foodHeight * (_MultiLevel + _GameManager._CustomerNum * 2);
                 }
-                //普通(黄色)
-                else if(_Slider.value < (_Slider.maxValue / 3f) * 2)
+                else
                 {
-                    //FillImage.color = new Color(231 / 255f, 198 / 255f,0);
-                    if(_ChangeChip == 2)
-                    {
-                        _CustomerInfo.chip -= _CustomerInfo.chipLevel;
-                        _ChangeChip--;
-                    }
+                    //_Slider.maxValue = 10 * (_MultiLevel + _GameManager._CustomerNum * 2);
                 }
+                _Slider.value = _Slider.maxValue;
+            }
                 
-                //60~231
-                //231~0
-
-            }     
+            //R:60->231 G:231->0
         }       
     }
 
@@ -216,6 +190,15 @@ public class CustomerTimeLimitBar : MonoBehaviour
     void SetCustomer()
     {
         _CustomerInfo = _CustomerManager.CustomerInfo[_Number - 1];
+        
+        _RStop = false;
+        _ChangeChip = 2;
+        _ChangeCustomerFlag = false;
+        _Flag = false;
+    }
+
+    public void InitializeValue()
+    {
         _RValue = R_INI;//初期化
         _GValue = G_INI;//初期化
 
@@ -223,32 +206,38 @@ public class CustomerTimeLimitBar : MonoBehaviour
         _Green = G_INI / 255f;
 
         _FillImage.color = new Color(R_INI/255f, G_INI/255f, 0);
-        _RStop = false;
-        _ChangeChip = 2;
-        _ChangeCustomerFlag = false;
-        _Flag = false;
 
         _HasReachRLimit = false;
         _HasReachGLimit = false;
     }
 
-    /// <summary> スライダーの進み加減に応じて色を変える </summary>
-    void ChangeColor()
+    public void UpdateTimeBar(float rateOfRemainingTime)
     {
-        float _number;
+        _Slider.value = rateOfRemainingTime;
+        ChangeColor(1-rateOfRemainingTime);
+    }
+
+    /// <summary> スライダーの進み加減に応じて色を変える </summary>
+    void ChangeColor(float rateOfRemainingTime)
+    {
+        float rate_of_total_range = rateOfRemainingTime * _TotalRGBRange;;
         //バーの進んだ割合
-        _number = ( 1 - (_Slider.value / _Slider.maxValue) ) * _TotalRGBRange;
+        if(_ForDebug)Debug.Log("rate_of_total_range:"+rate_of_total_range);
 
-        //if (_ForDebug) Debug.Log("number:" + _number);
-        //_RValue = _number;
-
-        if(!_HasReachRLimit)RValue = _number + R_INI;
-
-        else if (!_HasReachGLimit) GValue = G_INI - (_number - _RRange);
+        if (!_HasReachRLimit)
+        {
+            RValue = rate_of_total_range + R_INI;
+        }
+        else if (!_HasReachGLimit)
+        {
+            GValue = G_INI - (rate_of_total_range - _RRange);
+        }
 
         if (_ForDebug) Debug.Log("R:" + RValue + " G:" + GValue);
         _Red = RValue / 255f;
         _Green = GValue / 255f;
+
+        _FillImage.color = new Color(RValue/255f , GValue/255f, 0);
 
         /*
         //赤の処理
