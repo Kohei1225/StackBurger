@@ -43,12 +43,13 @@ public class MonitorScript : MonoBehaviour
             }
             
             //表示するべき食材があれば表示する
-            if(Foodnum != 0)
+            if(Foodnum > 0)
             {
                 //Debug.Log("foodNum:" + Foodnum);
             
                 _ActiveFood = Instantiate(_GameManager.FoodPrefabs[Foodnum - 1],_DisplayPosition,Quaternion.identity);
                 Destroy(_ActiveFood.GetComponent<Rigidbody2D>());
+
                 Destroy(_ActiveFood.GetComponent<BoxCollider2D>());
                 Destroy(_ActiveFood.GetComponent<FoodScript>());
                 _ActiveFood.transform.localScale = new Vector3(1.6f,1.6f,1);

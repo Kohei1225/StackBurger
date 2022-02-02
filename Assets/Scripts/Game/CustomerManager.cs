@@ -7,7 +7,7 @@ public class CustomerManager : SingletonMonoBehaviour<CustomerManager>
 {
     private GameObject _Managers;
     private GameSystem _GameManager;
-    private MoveOfFood _ThrowManager;
+    private MoveOfFood _MoveOfFoodManager;
     [SerializeField]private CustomerTimeLimitBar[] _TimeLimitBars = new CustomerTimeLimitBar[3];
     [SerializeField] AnimationCurve _WaitTimeGlaph;
 
@@ -68,7 +68,7 @@ public class CustomerManager : SingletonMonoBehaviour<CustomerManager>
         InitializeEmotionArray();
         _Managers = GameObject.Find("Managers");
         _GameManager = _Managers.GetComponent<GameSystem>();
-        _ThrowManager = _Managers.GetComponent<MoveOfFood>();
+        _MoveOfFoodManager = _Managers.GetComponent<MoveOfFood>();
         _IsLeaveCustomer = false;
         _CustomerMax = _AllCustomers.Length - 1;
         if(PlayerPrefs.GetInt("day") == 6)_CustomerMax = _AllCustomers.Length;
@@ -109,6 +109,7 @@ public class CustomerManager : SingletonMonoBehaviour<CustomerManager>
                         //メニューを投げる食材を更新してもらう
                     }
                 }
+                _MoveOfFoodManager.ResetFoodValue();
                 _IsLeaveCustomer = false;
             }
         }
