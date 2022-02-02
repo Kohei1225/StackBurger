@@ -32,7 +32,7 @@ public class StackScript : MonoBehaviour
     GameObject Managers;
     CustomerManager _CustomerScript;
     SelectPlate SelectManager;
-    MoveOfFood ThrowManager;
+    MoveOfFood _MoveOfFoodManager;
     GameSystem GameManager;
     Text weightText;
 
@@ -49,7 +49,7 @@ public class StackScript : MonoBehaviour
         GameManager = Managers.GetComponent<GameSystem>();
         _CustomerScript = Managers.GetComponent<CustomerManager>();
         SelectManager = GameObject.Find("Select").GetComponent<SelectPlate>();
-        ThrowManager = Managers.GetComponent<MoveOfFood>();
+        _MoveOfFoodManager = Managers.GetComponent<MoveOfFood>();
 
         dish = new int[SIZE];
         stackedfood = new GameObject[SIZE];
@@ -123,30 +123,30 @@ public class StackScript : MonoBehaviour
         //他のプレートの食材を登録する
         if(add)
         {
-            Debug.Log("RootPlate:" + SelectManager.Plate[ThrowManager.rootPlate].name);
+            Debug.Log("RootPlate:" + SelectManager.Plate[_MoveOfFoodManager._RootPlate].name);
             //一枚しか移動しない時
-            if(ThrowManager.moveTop)
+            if(_MoveOfFoodManager._IsMovingTopFood)
             {
                 top++;
                 Debug.Log("top: " + top);
                 //コピーする
-                dish[top] = SelectManager.Plate[ThrowManager.rootPlate].GetComponent<StackScript>().dish[ SelectManager.Plate[ThrowManager.rootPlate].GetComponent<StackScript>().top ];
-                stackedfood[top] = SelectManager.Plate[ThrowManager.rootPlate].GetComponent<StackScript>().stackedfood[ SelectManager.Plate[ThrowManager.rootPlate].GetComponent<StackScript>().top ];
+                dish[top] = SelectManager.Plate[_MoveOfFoodManager._RootPlate].GetComponent<StackScript>().dish[ SelectManager.Plate[_MoveOfFoodManager._RootPlate].GetComponent<StackScript>().top ];
+                stackedfood[top] = SelectManager.Plate[_MoveOfFoodManager._RootPlate].GetComponent<StackScript>().stackedfood[ SelectManager.Plate[_MoveOfFoodManager._RootPlate].GetComponent<StackScript>().top ];
                 depth -= 0.1f;
-                height += heightList[SelectManager.Plate[ThrowManager.rootPlate].GetComponent<StackScript>().dish[ SelectManager.Plate[ThrowManager.rootPlate].GetComponent<StackScript>().top] - 1];
+                height += heightList[SelectManager.Plate[_MoveOfFoodManager._RootPlate].GetComponent<StackScript>().dish[ SelectManager.Plate[_MoveOfFoodManager._RootPlate].GetComponent<StackScript>().top] - 1];
 
                 //高さの設定をする
-                SelectManager.Plate[ThrowManager.rootPlate].GetComponent<StackScript>().depth += 0.1f;
-                SelectManager.Plate[ThrowManager.rootPlate].GetComponent<StackScript>().height -= heightList[ SelectManager.Plate[ ThrowManager.rootPlate ].GetComponent<StackScript>().dish[ SelectManager.Plate[ThrowManager.rootPlate].GetComponent<StackScript>().top] ];
+                SelectManager.Plate[_MoveOfFoodManager._RootPlate].GetComponent<StackScript>().depth += 0.1f;
+                SelectManager.Plate[_MoveOfFoodManager._RootPlate].GetComponent<StackScript>().height -= heightList[ SelectManager.Plate[ _MoveOfFoodManager._RootPlate ].GetComponent<StackScript>().dish[ SelectManager.Plate[_MoveOfFoodManager._RootPlate].GetComponent<StackScript>().top] ];
 
                 //コピー元のトップを消す
-                SelectManager.Plate[ThrowManager.rootPlate].GetComponent<StackScript>().dish[ SelectManager.Plate[ThrowManager.rootPlate].GetComponent<StackScript>().top ] = 0;
-                SelectManager.Plate[ThrowManager.rootPlate].GetComponent<StackScript>().stackedfood[ SelectManager.Plate[ThrowManager.rootPlate].GetComponent<StackScript>().top ] = null;                
+                SelectManager.Plate[_MoveOfFoodManager._RootPlate].GetComponent<StackScript>().dish[ SelectManager.Plate[_MoveOfFoodManager._RootPlate].GetComponent<StackScript>().top ] = 0;
+                SelectManager.Plate[_MoveOfFoodManager._RootPlate].GetComponent<StackScript>().stackedfood[ SelectManager.Plate[_MoveOfFoodManager._RootPlate].GetComponent<StackScript>().top ] = null;                
 
-                SelectManager.Plate[ThrowManager.rootPlate].GetComponent<StackScript>().top--;
+                SelectManager.Plate[_MoveOfFoodManager._RootPlate].GetComponent<StackScript>().top--;
             }
-            else AddFood(SelectManager.Plate[ThrowManager.rootPlate].GetComponent<StackScript>().dish, SelectManager.Plate[ThrowManager.rootPlate].GetComponent<StackScript>().stackedfood);
-            ThrowManager.moveTop = false;   
+            else AddFood(SelectManager.Plate[_MoveOfFoodManager._RootPlate].GetComponent<StackScript>().dish, SelectManager.Plate[_MoveOfFoodManager._RootPlate].GetComponent<StackScript>().stackedfood);
+            _MoveOfFoodManager._IsMovingTopFood = false;   
             add = false;
         }
         if(reset)
@@ -194,7 +194,7 @@ public class StackScript : MonoBehaviour
         }
 
         //Enterで客に提供する
-        if(GameManager._IsStart && Input.GetKeyDown(KeyCode.Return) && isPlate && !ThrowManager.movedish && _CustomerScript.CustomerInfo[SelectCustomer._CustomerNum].CanReceiveFood)
+        if(GameManager._IsStart && Input.GetKeyDown(KeyCode.Return) && isPlate && !_MoveOfFoodManager._IsMovingAllFoods && _CustomerScript.CustomerInfo[SelectCustomer._CustomerNum].CanReceiveFood)
         {
             if (dish[0] != 0)
             {
@@ -232,7 +232,7 @@ public class StackScript : MonoBehaviour
                 //Debug.Log("Depth:" + depth);
                 //Debug.Log(gameObject.name + "で消します");
                 
-                SelectManager.Plate[ThrowManager.rootPlate].GetComponent<StackScript>().reset = true;
+                SelectManager.Plate[_MoveOfFoodManager._RootPlate].GetComponent<StackScript>().reset = true;
                 return;
             }
             dish[i + top + 1] = newFoodNum[i];
