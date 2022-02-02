@@ -3,27 +3,84 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-/// <summary> 保存するデータの構造 </summary>
+
+/// <summary>
+/// 保存するデータの構造
+///
+/// 作りたいデータに合わせてクラスを変更or作成してください。
+/// 以下のように内部クラスを調整するとやりやすいと思います。
+/// 配列を使わないなら内部クラスは一つだけでも大丈夫だと思います。
+/// また、新しクラスを他のファイルに作っても大丈夫です。
+///
+/// 例
+/// class GameData
+/// {
+///     [System.Serializable]
+///     class 使うデータ
+///     {
+///         ...
+///     }
+///
+///     [System.Serializable]
+///     class 使うデータで扱う構造(構造体的なイメージ)
+///     {
+///         ...
+///     }
+///
+///     public 使うデータ 外部から扱うデータ = new 使うデータ()
+/// }
+/// </summary>
 [System.Serializable]
-public class Data
+public class GameData
 {
-    public float _Score = 10;
-    public string _Name = "player";
+    /// <summary> jsonに保存されるデータの構造 </summary>
+    [System.Serializable]
+    public class Data
+    {
+        public Person[] Day1 = new Person[5];
+        public Person[] Day2 = new Person[5];
+        public Person[] Day3 = new Person[5];
+        public Person[] Day4 = new Person[5];
+        public Person[] Day5 = new Person[5];
+        public Person[] Day6 = new Person[5];
+        public Person[] Day7 = new Person[5];
+    }
+
+    /// <summary> データを構成する要素 </summary>
+    [System.Serializable]
+    public class Person
+    {
+        public string Name;
+        public float Score;
+        public Person()
+        {
+            this.Name = "UnName";
+            this.Score = 0;
+        }
+        public Person(string name,float score)
+        {
+            this.Name = name;
+            this.Score = score;
+        }
+    }
+
+    public static GameData Instance = new GameData();
+    public Data CurrentGameData = new Data();
 }
 
 /// <summary> 任意のゲームデータを扱うクラス </summary>
 public class GameDataManager : MonoBehaviour
 {
-    public static GameDataBase Instance = new GameDataBase();
-    private static string _FilePath = "Datas/";
+    public static GameDataManager Instance = new GameDataManager();
+    private const string FILE_PATH = "/Datas/";
 
-    public static void SaveData(Data saveData,string fileName)
+    public static void SaveData<T>(T saveData,string fileName)
     {
         StreamWriter writer;
 
         string json = JsonUtility.ToJson(saveData);
 
-        writer = new StreamWriter(Application.dataPath + _FilePath + fileName, false);
+        writer = new StreamWriter(Application.dataPath + FILE_PATH + fileName, false);
         writer.Write(json);
         writer.Flush();
         writer.Close();
@@ -31,21 +88,31 @@ public class GameDataManager : MonoBehaviour
 
     public static T LoadData<T>(string fileName)
     {
-        if(File.Exists(Application.dataPath + _FilePath + fileName))
+        if(File.Exists(Application.dataPath + FILE_PATH + fileName))
         {
             string json = "";
 
             StreamReader reader;
-            reader = new StreamReader(Application.dataPath + _FilePath, false);
+            reader = new StreamReader(Application.dataPath + FILE_PATH + fileName, false);
             json = reader.ReadToEnd();
             reader.Close();
 
             return JsonUtility.FromJson<T>(json);
         }
 
-        Debug.LogError(_FilePath + fileName + " is not Found!!");
+        Debug.LogError(FILE_PATH + fileName + " is not Found!!\nパスか名前が違う可能性があります.");
         T data = default(T);
         return data;
+    }
+
+    public static void ResetData()
+    {
+
+    }
+
+    public static void CheckDataPath()
+    {
+        Debug.Log("path:" + Application.dataPath);
     }
 }
 

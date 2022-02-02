@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class JsonDataTest : MonoBehaviour
 {
+    string file = "Test.json";
+    string file2 = "data.json";
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+        Debug.Log("Start JsonDataTest");
+        var data_instance = GameData.Instance.CurrentGameData;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameDataManager.SaveData(data_instance, file);
+        GameDataManager.LoadData<GameData>(file);
+
     }
 }
