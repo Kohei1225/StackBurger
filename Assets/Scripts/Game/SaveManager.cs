@@ -6,7 +6,7 @@ public class SaveManager
 {
     static SaveManager Instance = new SaveManager();
 
-    const string FILEPATH = "Nakajima/Datas/scoredata.json";
+    const string FILEPATH = "Assets/Datas/scoredata.json";
 
     SaveData Data = default;
 
