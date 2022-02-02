@@ -1,68 +1,26 @@
 ﻿<Properties StartupConfiguration="{560D3065-1C19-F8AB-1038-31296A3C6F25}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Game/SaveManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Game/GameDataManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Game/RecipeUIScript.cs" Line="90" Column="78" />
-      <File FileName="Assets/Scripts/Game/RecipeList.cs" />
-      <File FileName="Assets/Scripts/Game/MoveOfFood.cs" Line="22" Column="5" />
-      <File FileName="Assets/Scripts/Game/CustomerScript.cs" />
-      <File FileName="Assets/Scripts/Game/CustomerTimeLimitBar.cs" />
-      <File FileName="Assets/Scripts/Game/CustomerManager.cs" />
-      <File FileName="Assets/Scripts/Game/SelectCustomer.cs" />
-      <File FileName="Assets/Scripts/Menu/DayChangeScript.cs" />
-      <File FileName="Assets/Scripts/Button/ButtonFunctions.cs" />
-      <File FileName="Assets/Scripts/Option/ControlSound.cs" />
-      <File FileName="Assets/Scripts/Option/EasyToggle.cs" />
-      <File FileName="Assets/Scripts/Option/SoundScript.cs" />
-      <File FileName="Assets/Scripts/Title/TItleButton.cs" />
-      <File FileName="Assets/Scripts/Title/OpeningScript.cs" />
-      <File FileName="Assets/Scripts/Game/StackScript.cs" Line="149" Column="31" />
-      <File FileName="Assets/Scripts/Game/TimeLimitScript.cs" />
-      <File FileName="Assets/Scripts/Game/ChipTextScript.cs" />
-      <File FileName="Assets/Scripts/Game/GameSystem.cs" />
-      <File FileName="Assets/Scripts/Game/TimerScript.cs" />
-      <File FileName="Assets/Scripts/Menu/CalenderManager.cs" />
-      <File FileName="Assets/Scripts/Option/AudioTestScript.cs" />
-      <File FileName="Assets/Scripts/Game/SoundManager.cs" />
-      <File FileName="Assets/Scripts/Game/SelectPlate.cs" />
-      <File FileName="Assets/Scripts/Result/ResultManager.cs" />
-      <File FileName="Assets/Scripts/Game/MonitorScript.cs" />
-      <File FileName="Assets/Scripts/Game/EmotionMark.cs" />
-      <File FileName="Assets/Scripts/Game/SoundVolume.cs" />
-      <File FileName="Assets/Scripts/Game/SingletonMonoBehaviour.cs" />
-      <File FileName="Assets/Scripts/Game/SaveManager.cs" Line="9" Column="36" />
-      <File FileName="Assets/Scripts/Game/SaveData.cs" Line="54" Column="17" />
-      <File FileName="Assets/Scripts/Game/RankingManager.cs" Line="26" Column="27" />
-      <File FileName="Assets/Scripts/Game/EventManager.cs" />
-      <File FileName="Assets/Scripts/Game/GameDataBase.cs" Line="29" Column="20" />
-      <File FileName="Assets/Scripts/Game/Isave.cs" Line="5" Column="23" />
-      <File FileName="Assets/Scripts/Game/GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Datas/data.json" />
-      <File FileName="Assets/Scripts/Game/HighScoreObj.cs" />
-      <File FileName="Assets/Scripts/Game/MessageScript.cs" />
-      <File FileName="Assets/Scripts/Game/BGMScript.cs" />
-      <File FileName="Assets/Scripts/Game/FoodScript.cs" />
-      <File FileName="Assets/Scripts/Game/SoundManager1.cs" />
+      <File FileName="Assets/Scripts/Game/SaveData.cs" Line="8" Column="18" />
+      <File FileName="Assets/Scripts/Game/RankingManager.cs" Line="95" Column="26" />
+      <File FileName="Assets/Scripts/Game/GameDataBase.cs" Line="19" Column="1" />
+      <File FileName="Assets/Scripts/Game/SaveManager.cs" Line="9" Column="43" />
+      <File FileName="Assets/Scripts/Game/GameManager.cs" Line="27" Column="30" />
+      <File FileName="Assets/Scripts/Game/EventManager.cs" Line="40" Column="35" />
+      <File FileName="Assets/Scripts/Game/GameDataManager.cs" Line="11" Column="36" />
+      <File FileName="Assets/Scripts/Game/JsonDataTest.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="StackBurger" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="Game" expanded="True">
-                  <Node name="SaveManager.cs" selected="True" />
-                </Node>
-                <Node name="Option" expanded="True" />
-              </Node>
-            </Node>
-          </Node>
+          <Node name="StackBurger" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="efa876de-db6b-4277-bb57-e2f593d52c44" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="23d1c2c8-0fee-4fa9-afc6-b7f019911227" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
