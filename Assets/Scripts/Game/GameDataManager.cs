@@ -54,8 +54,8 @@ public class GameData
         public float Score;
         public Person()
         {
-            this.Name = "UnName";
-            this.Score = 0;
+            this.Name = "記録なし";
+            this.Score = -99;
         }
         public Person(string name,float score)
         {
@@ -66,6 +66,12 @@ public class GameData
 
     public static GameData Instance = new GameData();
     public Data CurrentGameData = new Data();
+
+    public static void ResetData()
+    {
+        Instance = new GameData();
+        Debug.Log("セーブデータがリセットされました.\nまだファイルには書き込んでいません.");
+    }
 }
 
 /// <summary> 任意のゲームデータを扱うクラス </summary>
@@ -77,37 +83,30 @@ public class GameDataManager : MonoBehaviour
     public static void SaveData<T>(T saveData,string fileName)
     {
         StreamWriter writer;
-
         string json = JsonUtility.ToJson(saveData);
-
         writer = new StreamWriter(Application.dataPath + FILE_PATH + fileName, false);
         writer.Write(json);
         writer.Flush();
         writer.Close();
+        Debug.Log("セーブデータをファイルに書き込みました.");
     }
 
-    public static T LoadData<T>(string fileName)
+    public static T LoadData<T>(string jsonFileName)
     {
-        if(File.Exists(Application.dataPath + FILE_PATH + fileName))
+        if(File.Exists(Application.dataPath + FILE_PATH + jsonFileName))
         {
-            string json = "";
-
+            string json;
             StreamReader reader;
-            reader = new StreamReader(Application.dataPath + FILE_PATH + fileName, false);
+            reader = new StreamReader(Application.dataPath + FILE_PATH + jsonFileName, false);
             json = reader.ReadToEnd();
             reader.Close();
 
             return JsonUtility.FromJson<T>(json);
         }
 
-        Debug.LogError(FILE_PATH + fileName + " is not Found!!\nパスか名前が違う可能性があります.");
-        T data = default(T);
+        Debug.LogError(FILE_PATH + jsonFileName + " is not found!!\nパスか名前が違う可能性があります.");
+        T data = default;
         return data;
-    }
-
-    public static void ResetData()
-    {
-
     }
 
     public static void CheckDataPath()
@@ -115,4 +114,3 @@ public class GameDataManager : MonoBehaviour
         Debug.Log("path:" + Application.dataPath);
     }
 }
-
