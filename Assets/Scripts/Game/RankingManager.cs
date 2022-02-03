@@ -4,97 +4,114 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RankingManager : MonoBehaviour
+public class RankingManager : SingletonMonoBehaviour<RankingManager>
 {
-    [Tooltip("スコアデータ")]
-    static SaveData.ScoreData[] m_scoreDatas = default;
-
     [Tooltip("ランキング画面")]
     [SerializeField]
     GameObject m_rankingPanel = default;
 
     [Tooltip("スコアを表示するテキスト")]
     [SerializeField]
-    Text[] m_scoreTexts = default;
-
-    [Header("デバッグ用")]
-    [SerializeField]
-    bool isDebug = default;
-
-    static bool Init = false;
-
-    public static RankingManager Instance { get; private set; }
-    public SaveData.ScoreData[] ScoreDatas { get => m_scoreDatas; set => m_scoreDatas = value; }
-
+    Text[] _ScoreTexts = default;
+    private string _FileName = "Test.json";
 
     void Awake()
     {
-        Instance = this;
-        if (isDebug)
+        if (Instance != this)
         {
-            GameManager.SaveData();
+            Destroy(this);
         }
+        Debug.Log("RankingManager.Awake()");
+        GameData.Instance.CurrentGameData = GameDataManager.LoadData<GameData.Data>(_FileName);
     }
 
     void Start()
     {
-        EventManager.ListenEvents(Events.RankingView, RankingView);
-        EventManager.ListenEvents(Events.RankingUpdate, RankingUpdate);
-
-        if (!Init)
+        for(int i = 0; i < GameData.Instance.CurrentGameData.Day1.Length;i++)
         {
-            m_scoreDatas = GameDataBase.Instance.GameData.ScoreDatas;
-            Init = true;
+            //Debug.Log(_RankingOfEachDate[i][2].Name);
+        }
+
+    }
+
+    public void UpdateRankingView(int date)
+    {
+        Debug.Log("UpdateRankingView()");
+        var current_ranking = RankingOfEachDate(date);
+        /*
+
+        Debug.Log(current_ranking);
+        */
+        for(int i = 0; i < current_ranking.Length;i++)
+        {
+            //Debug.Log("[" + i + "]name:" + current_ranking[i].Name + " score:" + current_ranking[i].Score);
+            var name = string.Format("{0,-15}", current_ranking[i].Name);
+            var score = string.Format("{0,-8}", current_ranking[i].Score);
+            _ScoreTexts[i].text = name + ": $" + score;
         }
     }
 
-    void RankingView()
+    public void UpdateRanking(string name, int newScore,int date)
     {
-        m_rankingPanel.SetActive(true);
+        string before_name = default;
+        string update_name = name;
+        float before_score = -100;
+        float update_score = newScore;
+        var current_ranking = RankingOfEachDate(date);
 
-        for (int i = 0; i < m_scoreTexts.Length; i++)
+        for (int i = 0; i < current_ranking.Length; i++)
         {
-            m_scoreTexts[i].text = $"{m_scoreDatas[i].PlayerName}：{m_scoreDatas[i].Score}点";
-        }
-    }
-
-    void RankingUpdate()
-    {
-        //GameDataBase.Instance.GameData.ScoreDatas = m_scoreDatas;
-        Debug.Log("ランキング更新");
-    }
-
-    public void RankingUpdate(string name, int newScore)
-    {
-        string beforeName = default;
-        string updateName = name;
-        int beforeScore = 0;
-        int updateScore = newScore;
-
-        for (int i = 0; i < m_scoreDatas.Length; i++)
-        {
-            if (m_scoreDatas[i].Score < beforeScore)
+            if (current_ranking[i].Score < before_score)
             {
-                string tempName = m_scoreDatas[i].PlayerName;
-                int tempScore = m_scoreDatas[i].Score;
+                string tempName = current_ranking[i].Name;
+                float tempScore = current_ranking[i].Score;
 
-                updateName = beforeName;
-                updateScore = beforeScore;
+                update_name = before_name;
+                update_score = before_score;
 
-                m_scoreDatas[i].PlayerName = updateName;
-                m_scoreDatas[i].Score = updateScore;
+                current_ranking[i].Name = update_name;
+                current_ranking[i].Score = update_score;
 
-                beforeName = tempName;
-                beforeScore = tempScore;
+                before_name = tempName;
+                before_score = tempScore;
             }
-            else if (m_scoreDatas[i].Score < updateScore)
+            else if (current_ranking[i].Score < update_score)
             {
-                beforeName = m_scoreDatas[i].PlayerName;
-                beforeScore = m_scoreDatas[i].Score;
+                before_name = current_ranking[i].Name;
+                before_score = current_ranking[i].Score;
 
-                m_scoreDatas[i].PlayerName = updateName;
-                m_scoreDatas[i].Score = updateScore;
+                current_ranking[i].Name = update_name;
+                current_ranking[i].Score = update_score;
             }
         }
     }
+
+    
+    GameData.Person[] RankingOfEachDate(int date)
+    {
+        var current_ranking = GameData.Instance.CurrentGameData.Day1;
+        switch (date)
+        {
+            case 2:
+                current_ranking = GameData.Instance.CurrentGameData.Day2;
+                break;
+            case 3:
+                current_ranking = GameData.Instance.CurrentGameData.Day3;
+                break;
+            case 4:
+                current_ranking = GameData.Instance.CurrentGameData.Day4;
+                break;
+            case 5:
+                current_ranking = GameData.Instance.CurrentGameData.Day5;
+                break;
+            case 6:
+                current_ranking = GameData.Instance.CurrentGameData.Day6;
+                break;
+            case 7:
+                current_ranking = GameData.Instance.CurrentGameData.Day7;
+                break;
+        }
+        return current_ranking;
+    }
+    
 }
