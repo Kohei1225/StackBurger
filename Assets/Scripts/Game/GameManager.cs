@@ -46,6 +46,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         ISave saveIf = gameData.GetComponent<ISave>();
         saveIf.Load(data.CurrentScoreDatas);
         Debug.Log(data);
-        RankingManager.Instance.ScoreDatas = data.CurrentScoreDatas.ScoreDatas;
+        //RankingManager.Instance.ScoreDatas = data.CurrentScoreDatas.ScoreDatas;
     }
 }

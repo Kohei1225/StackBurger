@@ -85,6 +85,6 @@ public class GameDataBase : MonoBehaviour, ISave
                 m_gameData.ScoreDatas[i].Score = updateScore;
             }
         }
-        RankingManager.Instance.ScoreDatas = m_gameData.ScoreDatas;
+        //RankingManager.Instance.ScoreDatas = m_gameData.ScoreDatas;
     }
 }
