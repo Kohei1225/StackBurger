@@ -28,7 +28,7 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
     /// <summary>  </summary>
     private int _FrameCounter = 0;
     /// <summary> ノルマスコア </summary>
-    private int _ClearPoint = 190;
+    private int _ClearPoint = 100;
 
     public GameObject[] _TextObject;
     Text[] _ResultTexts = new Text[5];
@@ -136,6 +136,7 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
         //あらかじめスコアを計算しておく
         for(int i = 0; i < 5; i++)_ResultTexts[i] = _TextObject[i].GetComponent<Text>();
         FinalScore = (_GoodSum * 0.02f * _ChipSum) - (_AngrySum * 10) - (_MissSum * 2.5f) + _ChipSum + 0*_HappySum;
+
         _Score[0] = _GoodSum; _Score[1] = _AngrySum; 
         _Score[2] = _MissSum; _Score[3] = _ChipSum; 
         _Score[4] = _FinalScore;
