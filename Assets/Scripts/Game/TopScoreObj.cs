@@ -44,6 +44,5 @@ public class TopScoreObj : SingletonMonoBehaviour<TopScoreObj>
         _CurrentTopRankNameText.text = playerName;
         if (score < 0) _CurrentTopRankScoreText.text = "-------";
         else _CurrentTopRankScoreText.text = "$" + score.ToString("N2");
-        
     }
 }

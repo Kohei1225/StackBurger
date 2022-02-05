@@ -141,6 +141,9 @@ public class ResultManager : MonoBehaviour
 
         _AudioSource.volume = PlayerPrefs.GetFloat("SEvol") * PlayerPrefs.GetInt("SEex");
         PlayerPrefs.Save();
+
+        var top_rank_m = FindObjectOfType<TopScoreObj>().GetComponent<TopScoreObj>();
+        top_rank_m.UpdateTopRankerInfo(CurrentDay);
     }
 
     // Update is called once per frame
