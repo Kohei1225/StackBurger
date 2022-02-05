@@ -197,6 +197,12 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
 
             if (_Junban == 5)
             {
+                //スコアがランクインするかの確認
+                if(RankingManager.Instance.IsRankInScore(FinalScore,CurrentDay))
+                {
+                    FindObjectOfType<RankInManager>().PlayRankInAnim();
+                }
+
                 if (_FinalScore >= _ClearPoint)
                 {
                     if (_CurrentDay < 7)
@@ -216,10 +222,7 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
                 {
                     _EndText.SetActive(true);
                     _EndText.GetComponent<Text>().text = _ClearPoint + "が最低ラインだ！！";
-                    if(RankingManager.Instance.IsRankInScore(FinalScore,CurrentDay))
-                    {
-                        FindObjectOfType<RankInManager>().PlayRankInAnim();
-                    }
+
                 }
                 return;
             }
@@ -270,7 +273,7 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
         {
             Debug.Log("[ " + order + " ](" + _Score[order] + ")");
         }
-        Debug.Log(_MoveValue);
+        //Debug.Log(_MoveValue);
         var diff = _Score[order] - _MoveValue;
         //Debug.Log("diff:" + diff);
         var dir = 1;

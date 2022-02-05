@@ -93,34 +93,30 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
     public void UpdateRanking(string name, float newScore,int date)
     {
         string before_name = default;
-        string update_name = name;
         float before_score = -100;
-        float update_score = newScore;
+
         var current_ranking = RankingOfEachDate(date);
 
         for (int i = 0; i < current_ranking.Length; i++)
         {
-            if (current_ranking[i].Score < before_score)
+            if (current_ranking[i].Score <= before_score)
             {
-                string tempName = current_ranking[i].Name;
-                float tempScore = current_ranking[i].Score;
+                string temp_name = current_ranking[i].Name;
+                float temp_score = current_ranking[i].Score;
 
-                update_name = before_name;
-                update_score = before_score;
+                current_ranking[i].Name = before_name;
+                current_ranking[i].Score = before_score;
 
-                current_ranking[i].Name = update_name;
-                current_ranking[i].Score = update_score;
-
-                before_name = tempName;
-                before_score = tempScore;
+                before_name = temp_name;
+                before_score = temp_score;
             }
-            else if (current_ranking[i].Score < update_score)
+            else if (current_ranking[i].Score < newScore)
             {
                 before_name = current_ranking[i].Name;
                 before_score = current_ranking[i].Score;
 
-                current_ranking[i].Name = update_name;
-                current_ranking[i].Score = update_score;
+                current_ranking[i].Name = name;
+                current_ranking[i].Score = newScore;
             }
         }
 
@@ -180,7 +176,9 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
     public bool IsRankInScore(float newScore, int date)
     {
         var current_ranking = RankingOfEachDate(date);
-
+        var index = current_ranking.Length - 1;
+        var rank = current_ranking[index];
+        Debug.Log("name:" + rank.Name + " score:" + rank.Score + "  newScore:" + newScore);
         return current_ranking[current_ranking.Length - 1].Score < newScore;
     }
 
