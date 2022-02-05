@@ -26,6 +26,8 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
             Destroy(this);
         }
         Debug.Log("RankingManager.Awake()");
+
+        //最初にjsonファイルから読み込ませたデータを保持する必要があるのでどこかにアタッチした方がいい.
         GameData.Instance.CurrentGameData = GameDataManager.LoadData<GameData.Data>(_FileName);
     }
 
@@ -94,8 +96,10 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
         }
     }
 
-    
-    GameData.Person[] RankingOfEachDate(int date)
+    /// <summary> 任意の日付のランキングを取得する </summary>
+    /// <param name="date"> 取得したいランキングの日付 </param>
+    /// <returns> 指定した日付のランキング </returns>
+    public GameData.Person[] RankingOfEachDate(int date)
     {
         var current_ranking = GameData.Instance.CurrentGameData.Day1;
         switch (date)
@@ -121,5 +125,20 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
         }
         return current_ranking;
     }
-    
+
+    /// <summary> 指定した日付の特定の順位を取得 </summary>
+    /// <param name="rank"> 順位 </param>
+    /// <param name="date"> 日付 </param>
+    /// <returns> 指定した順位データ </returns>
+    public GameData.Person SerchAnyRank(int rank, int date)
+    {
+        
+        var current_ranking = RankingOfEachDate(date);
+        if(rank < 1 && current_ranking.Length < rank)
+        {
+            Debug.LogError("SerchAnyRankの引数rankが範囲外です!!");
+            return current_ranking[0];
+        }
+        return current_ranking[rank - 1];
+    }
 }
