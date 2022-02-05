@@ -540,6 +540,9 @@ MonoBehaviour:
   m_rankingPanel: {fileID: 0}
   _NameTexts: []
   _ScoreTexts: []
+  _PreviousButton: {fileID: 0}
+  _NextButton: {fileID: 0}
+  _RankingTitleText: {fileID: 0}
 --- !u!82 &176357915
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1647,7 +1650,6 @@ GameObject:
   - component: {fileID: 616711187}
   - component: {fileID: 616711186}
   - component: {fileID: 616711185}
-  - component: {fileID: 616711188}
   m_Layer: 5
   m_Name: Yesterday
   m_TagString: Untagged
@@ -1769,18 +1771,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616711183}
   m_CullTransparentMesh: 1
---- !u!114 &616711188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 616711183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89bbc717471594d5bbae45093a3192b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &700580980
 GameObject:
   m_ObjectHideFlags: 0
@@ -2621,7 +2611,6 @@ GameObject:
   - component: {fileID: 1196802941}
   - component: {fileID: 1196802940}
   - component: {fileID: 1196802939}
-  - component: {fileID: 1196802942}
   m_Layer: 5
   m_Name: Tomorrow
   m_TagString: Untagged
@@ -2743,18 +2732,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1196802937}
   m_CullTransparentMesh: 1
---- !u!114 &1196802942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1196802937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89bbc717471594d5bbae45093a3192b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1273826501
 GameObject:
   m_ObjectHideFlags: 0

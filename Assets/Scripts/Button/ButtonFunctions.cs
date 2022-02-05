@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary> ボタンの機能をまとめたクラス </summary>
-public class ButtonFunctions : MonoBehaviour
+public class ButtonFunctions : SingletonMonoBehaviour<ButtonFunctions>
 {
     #region serialize field
     /// <summary> クリック音 </summary>
@@ -23,7 +23,8 @@ public class ButtonFunctions : MonoBehaviour
     [SerializeField] private ResultManager _ResultManager = null;
     /// <summary> タイトル画面の管理クラス </summary>
     [SerializeField] private TitleManager _TitleManager = null;
-
+    /// <summary> ランキングの管理クラス </summary>
+    [SerializeField] private RankingManager _RankingManager = null;
     #endregion
 
     #region field
@@ -286,7 +287,33 @@ public class ButtonFunctions : MonoBehaviour
         _TitleManager._State = TitleManager.TitleState.Explain;
     }
 
-    /// <summary> オプション画面に戻る </summary>
+    /// <summary> ランキング画面の表示 </summary>
+    public void DisplayRanking()
+    {
+        if (_TitleManager == null)
+        {
+            Debug.Log("TitleManagerがアタッチされてない.");
+            return;
+        }
+
+        PlayClickSound();
+        _TitleManager._State = TitleManager.TitleState.Ranking;
+    }
+
+    /// <summary> ランキング画面を閉じる </summary>
+    public void CloseRankingCanvas()
+    {
+        if (_TitleManager == null)
+        {
+            Debug.Log("TitleManagerがアタッチされてない.");
+            return;
+        }
+
+        PlayClickSound();
+        _TitleManager._State = TitleManager.TitleState.Option;
+    }
+
+    /// <summary> タイトル画面に戻る </summary>
     public void CloseCanvas()
     {
         if (_TitleManager == null)
@@ -297,6 +324,30 @@ public class ButtonFunctions : MonoBehaviour
 
         PlayClickSound();
         _TitleManager._State = TitleManager.TitleState.Title;
+    }
+
+    /// <summary> ランキングの日付を進める </summary>
+    public void ChangeNextRankingDate()
+    {
+        if (_RankingManager == null)
+        {
+            Debug.LogError("RankingManagerがアタッチされてない.");
+            return;
+        }
+        _RankingManager.ChangeNextDate();
+        PlayClickSound();
+    }
+
+    /// <summary> ランキングの日付を戻す </summary>
+    public void ChangePreviousRankingDate()
+    {
+        if (_RankingManager == null)
+        {
+            Debug.LogError("RankingManagerがアタッチされてない.");
+            return;
+        }
+        _RankingManager.ChangePreviousDate();
+        PlayClickSound();
     }
 
 

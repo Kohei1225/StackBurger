@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class RankingManager : SingletonMonoBehaviour<RankingManager>
 {
@@ -17,7 +18,32 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
     [Tooltip("スコアを表示するテキスト")]
     [SerializeField]
     Text[] _ScoreTexts = default;
+
+    [Tooltip("日付を戻すボタン")]
+    [SerializeField]
+    Button _PreviousButton = default;
+
+    [Tooltip("日付を進めるボタン")]
+    [SerializeField]
+    Button _NextButton = default;
+
+    [Tooltip("ランキングのタイトルを表示するテキスト")]
+    [SerializeField]
+    Text _RankingTitleText = default;
+
     private string _FileName = "Test.json";
+    private int _CurrentDate = 1;
+
+    public int CurrentDate
+    {
+        set
+        {
+            if (value < 1) _CurrentDate = 1;
+            else if (value > 7) _CurrentDate = 7;
+            else _CurrentDate = value;
+        }
+        get { return _CurrentDate; }
+    }
 
     void Awake()
     {
@@ -33,21 +59,19 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
 
     void Start()
     {
-        for(int i = 0; i < GameData.Instance.CurrentGameData.Day1.Length;i++)
+        if(SceneManager.GetActiveScene().name == "Title")
         {
-            //Debug.Log(_RankingOfEachDate[i][2].Name);
+            UpdateRankingView();
         }
-
     }
 
+    /// <summary> 指定したテキストにランキングを表示 </summary>
+    /// <param name="date"></param>
     public void UpdateRankingView(int date)
     {
         Debug.Log("UpdateRankingView()");
+        _RankingTitleText.text = date + "日目のランキング";
         var current_ranking = RankingOfEachDate(date);
-        /*
-
-        Debug.Log(current_ranking);
-        */
         for(int i = 0; i < current_ranking.Length;i++)
         {
             //Debug.Log("[" + i + "]name:" + current_ranking[i].Name + " score:" + current_ranking[i].Score);
@@ -59,6 +83,11 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
             _NameTexts[i].text = name;
             _ScoreTexts[i].text = score ;
         }
+    }
+
+    public void UpdateRankingView()
+    {
+        UpdateRankingView(CurrentDate);
     }
 
     public void UpdateRanking(string name, float newScore,int date)
@@ -153,5 +182,21 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
         var current_ranking = RankingOfEachDate(date);
 
         return current_ranking[current_ranking.Length - 1].Score < newScore;
+    }
+
+    public void ChangeNextDate()
+    {
+        CurrentDate++;
+        _NextButton.interactable = CurrentDate != 7;
+        _PreviousButton.interactable = true;
+        UpdateRankingView();
+    }
+
+    public void ChangePreviousDate()
+    {
+        CurrentDate--;
+        _PreviousButton.interactable = CurrentDate != 1;
+        _NextButton.interactable = true;
+        UpdateRankingView();
     }
 }
