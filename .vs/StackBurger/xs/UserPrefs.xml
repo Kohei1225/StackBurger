@@ -17,7 +17,7 @@
       <File FileName="Assets/Scripts/Menu/CalenderManager.cs" Line="86" Column="52" />
       <File FileName="Assets/Scripts/Button/ButtonFunctions.cs" Line="176" Column="26" />
       <File FileName="Assets/Scripts/Result/ResultManager.cs" Line="46" Column="47" />
-      <File FileName="Assets/Scripts/Result/RankInManager.cs" Line="7" Column="5" />
+      <File FileName="Assets/Scripts/Result/RankInManager.cs" Line="29" Column="37" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

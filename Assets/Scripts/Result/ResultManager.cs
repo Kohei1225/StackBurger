@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 /// <summary> 結果表示画面の処理をするクラス </summary>
-public class ResultManager : MonoBehaviour
+public class ResultManager : SingletonMonoBehaviour<ResultManager>
 {
     /// <summary> 受け渡した回数 </summary>
     private int _GoodSum = 10;
@@ -42,6 +42,7 @@ public class ResultManager : MonoBehaviour
     AudioSource _AudioSource;
     public AudioClip _Drum;
     public AudioClip _Cymbal;
+
     [SerializeField] Button[] _Buttons = null;
 
     #region property
@@ -98,16 +99,25 @@ public class ResultManager : MonoBehaviour
         get { return _GoodSum; }
     }
 
-    float FinalScore
+    public float FinalScore
     {
         set
         {
             _FinalScore = value;
             if (value < 0) _FinalScore = 0;
         }
+        get { return _FinalScore; }
     }
     #endregion
 
+
+    private void Awake()
+    {
+        if(Instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
