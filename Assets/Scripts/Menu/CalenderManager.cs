@@ -14,10 +14,10 @@ public class CalenderManager : MonoBehaviour
     private string [] _Explains = {
         "本日\nオープン！！",
         "新聞に\n載りました！",
-        "新バーガー\n登場！！",
+        "新バーガー\n追加！！",
         "サンドイッチ\nはじめました",
         "マフィンも\nはじめました",
-        "巨大バーガー\n追加！！",
+        "巨大バーガー\n登場！！",
         "おまかせも\n対応します！"
     };
     /// <summary> 表示する曜日 </summary>
