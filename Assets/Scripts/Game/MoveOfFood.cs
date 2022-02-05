@@ -11,7 +11,7 @@ public class MoveOfFood : MonoBehaviour
     SelectPlate _SelectManager;
     AudioSource _AudioSource;
     [SerializeField]MonitorScript [] _Displays = new MonitorScript[3];//モニターのスクリプトの配列
-    [SerializeField]StackScript [] _Plates = new StackScript[3];   //プレートにアタッチされてるスクリプト
+    [SerializeField]PlateScript [] _Plates = new PlateScript[3];   //プレートにアタッチされてるスクリプト
     
     public AudioClip _GarbageSound;
     public int [] _CandidateFoodsToDrop;//落とす具材の配列

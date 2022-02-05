@@ -9,7 +9,7 @@ public class CustomerScript : MonoBehaviour
     GameObject _Managers;        //大事なスクリプトが入ってるオブジェクト
     CustomerManager _CustomerManager;
     GameObject _Plate;           //提供用プレート
-    StackScript _PlateInfo;      //プレートの情報
+    PlateScript _PlateInfo;      //プレートの情報
     GameSystem _GameManager;
 
     public int _OrderNum{get;private set;} = 0;    //オーダー番号
@@ -73,7 +73,7 @@ public class CustomerScript : MonoBehaviour
         _CustomerManager = _Managers.GetComponent<CustomerManager>();
         _GameManager = _Managers.GetComponent<GameSystem>();
         _Plate = GameObject.Find("Plate");
-        _PlateInfo = _Plate.GetComponent<StackScript>();
+        _PlateInfo = _Plate.GetComponent<PlateScript>();
         //注文する商品を決める
         //Debug.Log("決めました。");
 

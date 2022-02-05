@@ -70,6 +70,7 @@ public class CustomerManager : SingletonMonoBehaviour<CustomerManager>
         _GameManager = _Managers.GetComponent<GameSystem>();
         _MoveOfFoodManager = _Managers.GetComponent<MoveOfFood>();
         _IsLeaveCustomer = false;
+        //最終日にしか登場しないキャラクターを配列の最後に入れてる
         _CustomerMax = _AllCustomers.Length - 1;
         if(PlayerPrefs.GetInt("day") == 6)_CustomerMax = _AllCustomers.Length;
     }
@@ -119,7 +120,9 @@ public class CustomerManager : SingletonMonoBehaviour<CustomerManager>
     /// <param name="Num">いなくなった場所の番号</param>
     void CallCustomer(int Num)
     {
-        var customer = _AllCustomers[Random.Range(0, _CustomerMax)];
+        var customer_numbers = Random.Range(0, _CustomerMax);
+        if (!_HasCallFirstCustomer && PlayerPrefs.GetInt("day") == 6) customer_numbers = _CustomerMax-1;
+        var customer = _AllCustomers[customer_numbers];
         var pos = new Vector3(_CustomersSliders[Num].transform.position.x, -15, 15);
 
         _CurrnetCustomers[Num] = Instantiate( customer, pos, Quaternion.identity);

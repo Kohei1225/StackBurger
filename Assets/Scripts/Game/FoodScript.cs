@@ -7,7 +7,7 @@ using UnityEngine.UI;
 /// <summary> 食材自体にアタッチするクラス </summary>
 public class FoodScript : MonoBehaviour
 {
-    StackScript _PlateScript;        //プレートのスクリプト
+    PlateScript _PlateScript;        //プレートのスクリプト
     GameObject _Plate;
     GameObject _Select;              //プレート選択オブジェクト
     SelectPlate _SelectManager;
@@ -66,7 +66,7 @@ public class FoodScript : MonoBehaviour
                     //自身が一番上の食材かつ
                     if(_TopMove)
                     {
-                        _YPos = _Plate.GetComponent<StackScript>().dropHeight - _Select.transform.position.y - 5;
+                        _YPos = _Plate.GetComponent<PlateScript>().dropHeight - _Select.transform.position.y - 5;
                         _Ytmp = _YPos;
                         _ZPos = 0;
                     }
@@ -89,7 +89,7 @@ public class FoodScript : MonoBehaviour
                         
                     }
                     //Debug.Log(SelectManager.Plate[SelectManager.plateNum].name + ":" + SelectManager.Plate[SelectManager.plateNum].transform.position.z);
-                    if(_TopMove)transform.position = new Vector3(_Select.transform.position.x, _YPos + _Select.transform.position.y + 5, -_ZPos + _SelectManager.Plate[_SelectManager.plateNum].GetComponent<StackScript>().depth);
+                    if(_TopMove)transform.position = new Vector3(_Select.transform.position.x, _YPos + _Select.transform.position.y + 5, -_ZPos + _SelectManager.Plate[_SelectManager.plateNum].GetComponent<PlateScript>().depth);
                     else transform.position = new Vector3(_Select.transform.position.x, _YPos + _Select.transform.position.y + 5, -_ZPos + _SelectManager.Plate[_SelectManager.plateNum].transform.position.z);
                 }
                 else 
@@ -103,7 +103,7 @@ public class FoodScript : MonoBehaviour
                     //if(topMove)zpos = 0.1f;
                     //if(SelectManager.Plate[SelectManager.plateNum].GetComponent<StackScript>().top > -1 && SelectManager.Plate[SelectManager.plateNum].GetComponent<StackScript>().stackedfood[SelectManager.Plate[SelectManager.plateNum].GetComponent<StackScript>().top].transform.position.y > SelectManager.Plate[SelectManager.plateNum].GetComponent<StackScript>().dropHeight)
                     //transform.position = new Vector3(Select.transform.position.x, ypos + SelectManager.Plate[SelectManager.plateNum].GetComponent<StackScript>().stackedfood[SelectManager.Plate[SelectManager.plateNum].GetComponent<StackScript>().top].transform.position.y + 5, -zpos + SelectManager.Plate[SelectManager.plateNum].GetComponent<StackScript>().depth);
-                    transform.position = new Vector3(_Select.transform.position.x, _YPos +/*Select.transform.position.y + 5 + */_SelectManager.Plate[_SelectManager.plateNum].GetComponent<StackScript>().dropHeight, -_ZPos + _SelectManager.Plate[_SelectManager.plateNum].GetComponent<StackScript>().depth);
+                    transform.position = new Vector3(_Select.transform.position.x, _YPos +/*Select.transform.position.y + 5 + */_SelectManager.Plate[_SelectManager.plateNum].GetComponent<PlateScript>().dropHeight, -_ZPos + _SelectManager.Plate[_SelectManager.plateNum].GetComponent<PlateScript>().depth);
                 }
             }
             else
@@ -130,22 +130,22 @@ public class FoodScript : MonoBehaviour
         if(Mathf.Abs(xPos - GameObject.Find("Plate").transform.position.x) < 0.5f)
         {
             _Plate = GameObject.Find("Plate");
-            _PlateScript = _Plate.GetComponent<StackScript>();
+            _PlateScript = _Plate.GetComponent<PlateScript>();
         }
         else if(Mathf.Abs(xPos - GameObject.Find("Plate1").transform.position.x) < 0.5f)
         {
             _Plate = GameObject.Find("Plate1");
-            _PlateScript = _Plate.GetComponent<StackScript>();
+            _PlateScript = _Plate.GetComponent<PlateScript>();
         }
         else if(Mathf.Abs(xPos - GameObject.Find("Plate2").transform.position.x) < 0.5f)
         {
             _Plate = GameObject.Find("Plate2");
-            _PlateScript = _Plate.GetComponent<StackScript>();
+            _PlateScript = _Plate.GetComponent<PlateScript>();
         }
         else if(Mathf.Abs(xPos - GameObject.Find("Plate3").transform.position.x) < 0.5f)
         {
             _Plate = GameObject.Find("Plate3");
-            _PlateScript = _Plate.GetComponent<StackScript>();
+            _PlateScript = _Plate.GetComponent<PlateScript>();
         }
         else _IsFood = false;
     }

@@ -134,6 +134,7 @@ public class GameSystem : SingletonMonoBehaviour<GameSystem>
         {
             Destroy(gameObject);
         }
+
     }
 
     // Start is called before the _first frame update
@@ -184,7 +185,8 @@ public class GameSystem : SingletonMonoBehaviour<GameSystem>
                 _Range = 59;
                 break;
         }
-
+        Debug.Log("num:" + _CustomerNum);
+        FindObjectOfType<SelectCustomer>().GetComponent<SelectCustomer>().SetInitializePlatePos(this._CustomerNum-1);
         //this.customerNum = 2;
         //range = 24;
         anim = GameObject.Find("ShutterObject").GetComponent<Animation>();

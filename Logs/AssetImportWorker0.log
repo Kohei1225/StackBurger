@@ -2843,3 +2843,257 @@ System memory in use after: 198.1 MB.
 Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2750.
 Total: 4.822279 ms (FindLiveObjects: 1.545319 ms CreateObjectMapping: 0.102177 ms MarkObjects: 2.042826 ms  DeleteObjects: 1.130946 ms)
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002776 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.789 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.44 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1846 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 198.1 MB.
+System memory in use after: 198.3 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2754.
+Total: 5.526106 ms (FindLiveObjects: 1.848043 ms CreateObjectMapping: 0.095155 ms MarkObjects: 2.948276 ms  DeleteObjects: 0.633221 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 1959.538578 seconds.
+  path: Assets/Scripts/Game/SelectPlate.cs
+  artifactKey: Guid(4eb73ef0403434fe7ae8f31df3842cff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Game/SelectPlate.cs using Guid(4eb73ef0403434fe7ae8f31df3842cff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c81d9e508da61497f6a68a5186a15fbb') in 0.346948 seconds
+  Import took 0.389086 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.021387 seconds.
+  path: Assets/Scripts/Game/SelectCustomer.cs
+  artifactKey: Guid(f7e43176ed9b44c3fbd54f70e232b3f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Game/SelectCustomer.cs using Guid(f7e43176ed9b44c3fbd54f70e232b3f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29bc89092a474dcef3b881397eff2deb') in 0.002722 seconds
+  Import took 0.011629 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.005264 seconds.
+  path: Assets/Scripts/Game/SelectCustomer.cs
+  artifactKey: Guid(f7e43176ed9b44c3fbd54f70e232b3f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Game/SelectCustomer.cs using Guid(f7e43176ed9b44c3fbd54f70e232b3f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29bc89092a474dcef3b881397eff2deb') in 0.001739 seconds
+  Import took 0.010376 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000733 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.47 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.724 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.47 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1846 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 198.3 MB.
+System memory in use after: 198.6 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2758.
+Total: 3.287511 ms (FindLiveObjects: 0.441315 ms CreateObjectMapping: 0.150736 ms MarkObjects: 2.651798 ms  DeleteObjects: 0.042163 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 513.997817 seconds.
+  path: Assets/Scripts/Game/SelectCustomer.cs
+  artifactKey: Guid(f7e43176ed9b44c3fbd54f70e232b3f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Game/SelectCustomer.cs using Guid(f7e43176ed9b44c3fbd54f70e232b3f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f030f6917f1e2e81892edf9488c6884') in 0.056142 seconds
+  Import took 0.061820 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001955 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.53 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.658 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.58 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1846 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 198.5 MB.
+System memory in use after: 198.8 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2762.
+Total: 5.213480 ms (FindLiveObjects: 1.190804 ms CreateObjectMapping: 0.327623 ms MarkObjects: 3.087755 ms  DeleteObjects: 0.605694 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001784 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.060 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.54 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1846 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 198.8 MB.
+System memory in use after: 199.0 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2766.
+Total: 3.900760 ms (FindLiveObjects: 1.076595 ms CreateObjectMapping: 0.099060 ms MarkObjects: 1.957055 ms  DeleteObjects: 0.767226 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001388 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.45 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.495 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.67 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1846 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 199.0 MB.
+System memory in use after: 199.2 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2770.
+Total: 13.189145 ms (FindLiveObjects: 0.879990 ms CreateObjectMapping: 0.152859 ms MarkObjects: 10.731808 ms  DeleteObjects: 1.422380 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 520.689711 seconds.
+  path: Assets/Scripts/Game/SelectCustomer.cs
+  artifactKey: Guid(f7e43176ed9b44c3fbd54f70e232b3f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Game/SelectCustomer.cs using Guid(f7e43176ed9b44c3fbd54f70e232b3f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb08b1a7356bdd2b7e6f4de76ff85068') in 0.031941 seconds
+  Import took 0.039141 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002410 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.43 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.478 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.43 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1846 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 199.2 MB.
+System memory in use after: 199.4 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2774.
+Total: 3.784022 ms (FindLiveObjects: 0.836259 ms CreateObjectMapping: 0.094460 ms MarkObjects: 2.039824 ms  DeleteObjects: 0.812413 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 34.995957 seconds.
+  path: Assets/Scripts/Game/SelectCustomer.cs
+  artifactKey: Guid(f7e43176ed9b44c3fbd54f70e232b3f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Game/SelectCustomer.cs using Guid(f7e43176ed9b44c3fbd54f70e232b3f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e7146e7a29d4ed68188e310d489d02c') in 0.007893 seconds
+  Import took 0.014196 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003275 seconds.
+  path: Assets/Scripts/Game/SelectCustomer.cs
+  artifactKey: Guid(f7e43176ed9b44c3fbd54f70e232b3f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Game/SelectCustomer.cs using Guid(f7e43176ed9b44c3fbd54f70e232b3f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e7146e7a29d4ed68188e310d489d02c') in 0.001628 seconds
+  Import took 0.008148 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000834 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.595 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.60 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1846 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 199.4 MB.
+System memory in use after: 199.6 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2778.
+Total: 4.625755 ms (FindLiveObjects: 0.513572 ms CreateObjectMapping: 0.160907 ms MarkObjects: 2.392216 ms  DeleteObjects: 1.557570 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001616 seconds.
+Callback registration failed. Increase kMaxCallback.
+
+Fatal Error! Callback registration failed. Increase kMaxCallback.
+
+Obtained 42 stack frames.
+#0  0x007fff20338462 in __pthread_kill
+#1  0x007fff202b9720 in abort
+#2  0x00000107000b3e in CrashDontLaunchBugReporter()
+#3  0x00000104c7f427 in EditorMonoConsole::LogToConsoleImplementation(CppLogEntry const&)
+#4  0x00000104c7e827 in EditorMonoConsole::LogToConsoleImplementation(DebugStringToFileData const&)
+#5  0x00000104c801be in LogToConsoleImplementation(DebugStringToFileData const&)
+#6  0x00000106a4b49d in DebugStringToFilePostprocessedStacktrace(DebugStringToFileData const&)
+#7  0x00000106a4bd83 in DebugStringToFile(DebugStringToFileData const&)
+#8  0x0000010269a3b4 in CallbackArrayBase<void (*)(AssemblyLoadFailure), void (*)(void const*, AssemblyLoadFailure)>::Register(void (*)(AssemblyLoadFailure), void (*)(void const*, AssemblyLoadFailure), void const*)
+#9  0x00000105618168 in LoadDomainAndUserAssemblies(bool)
+#10 0x0000010561ab5e in LoadUserAssemblies()
+#11 0x00000105b00079 in AssetImportWorkerClient::ReloadMonoDomain(AssetResolver&)
+#12 0x00000105b2b35e in core::mutable_function<void ()>::DispatchT<void IOService::PostHelper<AssetImportWorkerClient::HandleMessage(PrepareMessage const&)::$_5>(AssetImportWorkerClient::HandleMessage(PrepareMessage const&)::$_5&&, IOService::WrapCallableInFunctionTag)::'lambda'()>::Dispatch()
+#13 0x00000105b9f000 in asio::detail::completion_handler<core::mutable_function<void ()> >::do_complete(asio::detail::task_io_service*, asio::detail::task_io_service_operation*, std::__1::error_code const&, unsigned long)
+#14 0x00000105b9c2c5 in asio::detail::task_io_service::do_run_one(asio::detail::scoped_lock<asio::detail::posix_mutex>&, asio::detail::task_io_service_thread_info&, std::__1::error_code const&)
+#15 0x00000105b9bd61 in asio::detail::task_io_service::run(std::__1::error_code&)
+#16 0x00000105b9602a in IOService::Run(bool)
+#17 0x00000105af345c in RunAssetImporterV2()
+#18 0x00000104df64c3 in Application::InitializeProject()
+#19 0x0000010700c49d in -[EditorApplication applicationDidFinishLaunching:]
+#20 0x007fff20453fec in __CFNOTIFICATIONCENTER_IS_CALLING_OUT_TO_AN_OBSERVER__
+#21 0x007fff204ef89b in ___CFXRegistrationPost_block_invoke
+#22 0x007fff204ef80f in _CFXRegistrationPost
+#23 0x007fff20424bde in _CFXNotificationPost
+#24 0x007fff21193abe in -[NSNotificationCenter postNotificationName:object:userInfo:]
+#25 0x007fff22c85b2d in -[NSApplication _postDidFinishNotification]
+#26 0x007fff22c8587b in -[NSApplication _sendFinishLaunchingNotification]
+#27 0x007fff22c82a72 in -[NSApplication(NSAppleEventHandling) _handleAEOpenEvent:]
+#28 0x007fff22c826c7 in -[NSApplication(NSAppleEventHandling) _handleCoreEvent:withReplyEvent:]
+#29 0x007fff211bf056 in -[NSAppleEventManager dispatchRawAppleEvent:withRawReply:handlerRefCon:]
+#30 0x007fff211beec6 in _NSAppleEventManagerGenericHandler
+#31 0x007fff2623ced9 in _AppleEventsCheckInAppWithBlock
+#32 0x007fff2623c5f4 in _AppleEventsCheckInAppWithBlock
+#33 0x007fff26235260 in aeProcessAppleEvent
+#34 0x007fff286f65a2 in AEProcessAppleEvent
+#35 0x007fff22c7ce3e in _DPSNextEvent
+#36 0x007fff22c7b177 in -[NSApplication(NSEvent) _nextEventMatchingEventMask:untilDate:inMode:dequeue:]
+#37 0x007fff22c6d68a in -[NSApplication run]
+#38 0x007fff22c4196f in NSApplicationMain
+#39 0x00000107047269 in EditorMain(int, char const**)
+#40 0x00000107047499 in main
+#41 0x007fff20381621 in start
