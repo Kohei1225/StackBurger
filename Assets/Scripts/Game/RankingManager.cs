@@ -62,6 +62,7 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
         if(SceneManager.GetActiveScene().name == "Title")
         {
             UpdateRankingView();
+            _PreviousButton.interactable = false;
         }
     }
 

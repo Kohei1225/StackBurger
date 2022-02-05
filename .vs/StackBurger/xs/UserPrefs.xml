@@ -1,13 +1,15 @@
 ﻿<Properties StartupConfiguration="{560D3065-1C19-F8AB-1038-31296A3C6F25}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Result/ResultManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Game/LetterMessage.cs">
     <Files>
-      <File FileName="Assets/Scripts/Game/MessageScript.cs" Line="140" Column="33" />
+      <File FileName="Assets/Scripts/Game/MessageScript.cs" Line="94" Column="22" />
       <File FileName="Assets/Scripts/Game/RecipeList.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Menu/CalenderManager.cs" Line="22" Column="7" />
-      <File FileName="Assets/Scripts/Result/ResultManager.cs" Line="138" Column="60" />
+      <File FileName="Assets/Scripts/Menu/CalenderManager.cs" Line="20" Column="20" />
+      <File FileName="Assets/Scripts/Result/ResultManager.cs" Line="31" Column="34" />
       <File FileName="Assets/Scripts/Menu/MenuManager.cs" Line="47" Column="60" />
       <File FileName="Assets/Scripts/Option/ResetButton.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Option/EasyToggle.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Title/TitleManager.cs" Line="66" Column="38" />
+      <File FileName="Assets/Scripts/Game/RankingManager.cs" Line="65" Column="49" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,12 +18,12 @@
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
                 <Node name="Button" expanded="True" />
-                <Node name="Game" expanded="True" />
+                <Node name="Game" expanded="True">
+                  <Node name="LetterMessage.cs" selected="True" />
+                </Node>
                 <Node name="Menu" expanded="True" />
                 <Node name="Option" expanded="True" />
-                <Node name="Result" expanded="True">
-                  <Node name="ResultManager.cs" selected="True" />
-                </Node>
+                <Node name="Result" expanded="True" />
                 <Node name="Title" expanded="True" />
               </Node>
             </Node>
