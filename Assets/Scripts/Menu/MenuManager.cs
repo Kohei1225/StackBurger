@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 /// <summary> メニューシーンの管理クラス </summary>
 public class MenuManager : MonoBehaviour
 {
+    [SerializeField] private GameObject _EndingButton = null;
     #region field
     /// <summary> 選択してる日付 </summary>
     private int _CurrentDay = 1;
@@ -43,6 +44,8 @@ public class MenuManager : MonoBehaviour
         //(ここで保存した日にちは終わらせた日付。なので最新の日は day + 1 になる)
         if(!PlayerPrefs.HasKey("day"))PlayerPrefs.SetInt("day",0);
         //day = PlayerPrefs.GetInt("day") + 1;
+        _EndingButton.SetActive(PlayerPrefs.GetInt("day") >= 7);
+
     }
 
     // Update is called once per frame
