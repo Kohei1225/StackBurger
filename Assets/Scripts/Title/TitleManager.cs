@@ -12,6 +12,7 @@ public class TitleManager : MonoBehaviour
         Title,
         Explain,
         Option,
+        Ranking,
     }
 
     /// <summary> タイトル画面の状態 </summary>
@@ -20,6 +21,8 @@ public class TitleManager : MonoBehaviour
     [SerializeField]private GameObject _Explain = null;
     /// <summary> 設定用オブジェクト </summary>
     [SerializeField]private GameObject _Option = null;
+    /// <summary> ランキング表示用オブジェクト </summary>
+    [SerializeField] private GameObject _Ranking = null;
 
     // Start is called before the first frame update
     void Start()
@@ -43,27 +46,20 @@ public class TitleManager : MonoBehaviour
         {
             Debug.Log("Optionがアタッチされてない");
         }
+        if(_Ranking == null)
+        {
+            Debug.LogError("Ranking is no attached !!");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //遊び方説明表示
-        if(_State == TitleState.Explain)
-        {
-            _Explain.SetActive(true);
-        }
-        //オプション表示
-        else if(_State == TitleState.Option)
-        {
-            _Option.SetActive(true);
-        }
-        //タイトル画面
-        else 
-        {
-            _Explain.SetActive(false);
-            _Option.SetActive(false);
-        }
-        if(PlayerPrefs.GetInt("Complete") == 0 && GameObject.Find("Complete"))GameObject.Find("Complete").SetActive(false);
+        _Explain.SetActive(_State == TitleState.Explain);
+        _Option.SetActive(_State == TitleState.Option);
+        _Ranking.SetActive(_State == TitleState.Ranking);
+
+        if(PlayerPrefs.GetInt("Complete") == 0 && GameObject.Find("Complete"))
+            GameObject.Find("Complete").SetActive(false);
     }
 }
