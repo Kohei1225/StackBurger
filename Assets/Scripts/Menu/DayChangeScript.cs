@@ -23,6 +23,8 @@ public class DayChangeScript : MonoBehaviour
 
     public void OnClicked()
     {
+        Debug.Log("OnClicked()");
+        var top_rank_m = FindObjectOfType<TopScoreObj>().GetComponent<TopScoreObj>();
         if(gameObject.name == "Tomorrow")
         {
             _Calender.CurrentDay++;
@@ -35,5 +37,7 @@ public class DayChangeScript : MonoBehaviour
             _AudioSource.Stop();
             _AudioSource.PlayOneShot(_Calender._ChangeDaySound);
         }
+
+        top_rank_m.UpdateTopRankerInfo(_Calender.CurrentDay);
     }
 }

@@ -153,6 +153,9 @@ public class CalenderManager : MonoBehaviour
         _BoardText.text = _Explains[CurrentDay - 1];
         _MenuDay.text = "6/" + CurrentDay.ToString();
         _DayOfWeekText.text = _DayOfWeekNames[CurrentDay - 1];
+
+        var top_rank_m = FindObjectOfType<TopScoreObj>().GetComponent<TopScoreObj>();
+        top_rank_m.UpdateTopRankerInfo(CurrentDay);
     }
 
 
@@ -182,4 +185,19 @@ public class CalenderManager : MonoBehaviour
         return;
     }
 
+    public void OnClicked()
+    {
+        
+        if (gameObject.name == "Tomorrow")
+        {
+            TurnNextDay();
+            PlayTurnDaySound();
+        }
+        if (gameObject.name == "Yesterday")
+        {
+            TurnPreviousDay();
+            PlayTurnDaySound();
+        }
+        
+    }
 }
