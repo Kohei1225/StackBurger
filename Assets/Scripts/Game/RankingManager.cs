@@ -141,4 +141,15 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
         }
         return current_ranking[rank - 1];
     }
+
+    /// <summary> 新しいスコアがランクインするかを確認する </summary>
+    /// <param name="newScore"></param>
+    /// <param name="date"></param>
+    /// <returns></returns>
+    public bool IsRankInScore(int newScore, int date)
+    {
+        var current_ranking = RankingOfEachDate(date);
+
+        return current_ranking[current_ranking.Length - 1].Score < newScore;
+    }
 }

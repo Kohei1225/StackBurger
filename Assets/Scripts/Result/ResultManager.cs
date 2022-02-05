@@ -42,6 +42,7 @@ public class ResultManager : MonoBehaviour
     AudioSource _AudioSource;
     public AudioClip _Drum;
     public AudioClip _Cymbal;
+    [SerializeField] Button[] _Buttons = null;
 
     #region property
     /// <summary> 何日目か </summary>
