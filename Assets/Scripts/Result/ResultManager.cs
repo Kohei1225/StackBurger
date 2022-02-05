@@ -216,6 +216,10 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
                 {
                     _EndText.SetActive(true);
                     _EndText.GetComponent<Text>().text = _ClearPoint + "が最低ラインだ！！";
+                    if(RankingManager.Instance.IsRankInScore(FinalScore,CurrentDay))
+                    {
+                        FindObjectOfType<RankInManager>().PlayRankInAnim();
+                    }
                 }
                 return;
             }

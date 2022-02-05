@@ -148,7 +148,7 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
     /// <param name="newScore"></param>
     /// <param name="date"></param>
     /// <returns></returns>
-    public bool IsRankInScore(int newScore, int date)
+    public bool IsRankInScore(float newScore, int date)
     {
         var current_ranking = RankingOfEachDate(date);
 

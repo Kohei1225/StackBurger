@@ -24,7 +24,6 @@ public class RankInManager : SingletonMonoBehaviour<RankInManager>
         _Animation = GetComponent<Animation>();
         _InputField = transform.Find("NewRankInObject/InputField").GetComponent<InputField>();
         _ResultManager = FindObjectOfType<ResultManager>();
-        PlayRankInAnim();
     }
 
     // Update is called once per frame
@@ -54,5 +53,11 @@ public class RankInManager : SingletonMonoBehaviour<RankInManager>
         Debug.Log("name:" + name + " score:" + score);
         var rank_m = FindObjectOfType<RankingManager>().GetComponent<RankingManager>();
         rank_m.UpdateRanking(name, score, date);
+
+        for(int i = 0;i < _Buttons.Length;i++)
+        {
+            _Buttons[i].interactable = true;
+        }
+        Destroy(gameObject);
     }
 }
