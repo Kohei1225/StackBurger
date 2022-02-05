@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary> 置き手紙の処理を行うクラス </summary>
-public class MessageScript : MonoBehaviour
+public class LetterMessage : SingletonMonoBehaviour<LetterMessage>
 {
     GameSystem _GameManager;
     Text _MessageText;
@@ -132,6 +132,14 @@ public class MessageScript : MonoBehaviour
         get { return _HasRead; }
     }
     #endregion
+
+    void Awake()
+    {
+        if(Instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
