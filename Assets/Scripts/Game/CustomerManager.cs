@@ -72,7 +72,7 @@ public class CustomerManager : SingletonMonoBehaviour<CustomerManager>
         _IsLeaveCustomer = false;
         //最終日にしか登場しないキャラクターを配列の最後に入れてる
         _CustomerMax = _AllCustomers.Length - 1;
-        if(PlayerPrefs.GetInt("day") == 6)_CustomerMax = _AllCustomers.Length;
+        if(_GameManager.CurrentDay == 7)_CustomerMax = _AllCustomers.Length;
     }
 
     // Update is called once per frame
@@ -121,7 +121,7 @@ public class CustomerManager : SingletonMonoBehaviour<CustomerManager>
     void CallCustomer(int Num)
     {
         var customer_numbers = Random.Range(0, _CustomerMax);
-        if (!_HasCallFirstCustomer && PlayerPrefs.GetInt("day") == 6) customer_numbers = _CustomerMax-1;
+        if (!_HasCallFirstCustomer && _GameManager.CurrentDay == 7) customer_numbers = _CustomerMax-1;
         var customer = _AllCustomers[customer_numbers];
         var pos = new Vector3(_CustomersSliders[Num].transform.position.x, -15, 15);
 
