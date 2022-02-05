@@ -18,7 +18,7 @@ public class ButtonFunctions : SingletonMonoBehaviour<ButtonFunctions>
     /// <summary> メニューを管理するクラス </summary>
     [SerializeField] private MenuManager _MenuManager = null;
     /// <summary> 置き手紙の管理クラス </summary>
-    [SerializeField]private MessageScript _MessageManager = null;
+    [SerializeField]private LetterMessage _MessageManager = null;
     /// <summary> 結果画面の管理クラス </summary>
     [SerializeField] private ResultManager _ResultManager = null;
     /// <summary> タイトル画面の管理クラス </summary>

@@ -12,7 +12,13 @@ public class CalenderManager : MonoBehaviour
     private int _MaxDay;//
     /// <summary> ステージタイトル </summary>
     private string [] _Explains = {
-        "本日\nオープン！！","新聞に\n載りました！","新バーガー\n登場！！","サンドイッチ\nはじめました","マフィンも\nはじめました","新メニュー\n追加！！","おまかせも\n対応します！"
+        "本日\nオープン！！",
+        "新聞に\n載りました！",
+        "新バーガー\n登場！！",
+        "サンドイッチ\nはじめました",
+        "マフィンも\nはじめました",
+        "巨大バーガー\n追加！！",
+        "おまかせも\n対応します！"
     };
     /// <summary> 表示する曜日 </summary>
     private string [] _DayOfWeekNames = {
