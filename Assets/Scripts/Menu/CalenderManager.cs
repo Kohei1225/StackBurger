@@ -81,6 +81,9 @@ public class CalenderManager : MonoBehaviour
         //Debug.Log(day);
         _AudioSource = GetComponent<AudioSource>();
         _AudioSource.volume = PlayerPrefs.GetFloat("SEvol") * PlayerPrefs.GetInt("SEex");
+
+        var top_rank_m = FindObjectOfType<TopScoreObj>().GetComponent<TopScoreObj>();
+        top_rank_m.UpdateTopRankerInfo(CurrentDay);
     }
 
     // Update is called once per frame
@@ -183,21 +186,5 @@ public class CalenderManager : MonoBehaviour
             _DayOfWeekText.color = new Color(0, 0, 0);
         }
         return;
-    }
-
-    public void OnClicked()
-    {
-        
-        if (gameObject.name == "Tomorrow")
-        {
-            TurnNextDay();
-            PlayTurnDaySound();
-        }
-        if (gameObject.name == "Yesterday")
-        {
-            TurnPreviousDay();
-            PlayTurnDaySound();
-        }
-        
     }
 }
