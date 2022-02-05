@@ -61,7 +61,7 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
         }
     }
 
-    public void UpdateRanking(string name, int newScore,int date)
+    public void UpdateRanking(string name, float newScore,int date)
     {
         string before_name = default;
         string update_name = name;
@@ -94,6 +94,8 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
                 current_ranking[i].Score = update_score;
             }
         }
+
+        GameDataManager.SaveData();
     }
 
     /// <summary> 任意の日付のランキングを取得する </summary>

@@ -79,6 +79,7 @@ public class GameDataManager : MonoBehaviour
 {
     public static GameDataManager Instance = new GameDataManager();
     private const string FILE_PATH = "/Datas/";
+    private const string FILE_NAME = "Test.json";
 
     public static void SaveData<T>(T saveData,string fileName)
     {
@@ -89,6 +90,11 @@ public class GameDataManager : MonoBehaviour
         writer.Flush();
         writer.Close();
         Debug.Log("セーブデータをファイルに書き込みました.");
+    }
+
+    public static void SaveData()
+    {
+        SaveData(GameData.Instance.CurrentGameData,FILE_NAME);
     }
 
     public static T LoadData<T>(string jsonFileName)
