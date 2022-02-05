@@ -7,7 +7,8 @@ public class RankInManager : SingletonMonoBehaviour<RankInManager>
 {
     [SerializeField] private Button[] _Buttons = null;
     private Animation _Animation = null;
-    [SerializeField]private InputField _InputField = null;
+    private InputField _InputField = null;
+    private ResultManager _ResultManager = null;
 
     void Awake()
     {
@@ -22,6 +23,7 @@ public class RankInManager : SingletonMonoBehaviour<RankInManager>
     {
         _Animation = GetComponent<Animation>();
         _InputField = transform.Find("NewRankInObject/InputField").GetComponent<InputField>();
+        _ResultManager = FindObjectOfType<ResultManager>();
         PlayRankInAnim();
     }
 
@@ -39,12 +41,18 @@ public class RankInManager : SingletonMonoBehaviour<RankInManager>
         }
         _Animation.Play();
     }
+
     public void ClickedDeciedButton()
     {
         var name = _InputField.text;
-        var score = FindObjectOfType<ResultManager>().GetComponent<ResultManager>().FinalScore;
+        if(name == "")
+        {
+            name = "Unknown";
+        }
+        var score = _ResultManager.FinalScore;
+        var date = _ResultManager.CurrentDay;
         Debug.Log("name:" + name + " score:" + score);
         var rank_m = FindObjectOfType<RankingManager>().GetComponent<RankingManager>();
-        //rank_m.UpdateRanking()
+        rank_m.UpdateRanking(name, score, date);
     }
 }
