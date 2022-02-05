@@ -573,7 +573,6 @@ MonoBehaviour:
   - {fileID: 6842145951898632628, guid: f1d4a090d05b543feb18f0efe03f3a3f, type: 3}
   - {fileID: 6842145951898632628, guid: f1d4a090d05b543feb18f0efe03f3a3f, type: 3}
   - {fileID: 6842145951898632628, guid: f1d4a090d05b543feb18f0efe03f3a3f, type: 3}
-  Name: {fileID: 1845554754}
 --- !u!114 &1172367536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,7 +725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd519cacd9a44b948412d7a5068fe75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start: 1
+  _Start: 1
 --- !u!1 &1187131450
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,8 +770,6 @@ GameObject:
   - component: {fileID: 1281959244}
   - component: {fileID: 1281959243}
   - component: {fileID: 1281959248}
-  - component: {fileID: 1281959246}
-  - component: {fileID: 1281959247}
   m_Layer: 5
   m_Name: TitleButton
   m_TagString: Untagged
@@ -844,21 +841,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1281959246}
-        m_TargetAssemblyTypeName: GoToTitle, Assembly-CSharp
-        m_MethodName: OnClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1281959247}
-        m_TargetAssemblyTypeName: ButtonBasic, Assembly-CSharp
-        m_MethodName: OnClick
+      - m_Target: {fileID: 2014975260}
+        m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
+        m_MethodName: GoToTitle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -906,30 +891,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281959241}
   m_CullTransparentMesh: 1
---- !u!114 &1281959246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281959241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfea9cb2ac09146a49d093881f2a1613, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1281959247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281959241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e5cfb9e7a3b64e56b3b56fcc92b9666, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1281959248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,9 +908,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1281959247}
-          m_TargetAssemblyTypeName: ButtonBasic, Assembly-CSharp
-          m_MethodName: OnEnter
+        - m_Target: {fileID: 2014975260}
+          m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
+          m_MethodName: PlayCursorOnEnterSound
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1357,10 +1318,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2014975261}
-  - component: {fileID: 2014975260}
   - component: {fileID: 2014975259}
+  - component: {fileID: 2014975260}
   m_Layer: 0
-  m_Name: ButtonSound
+  m_Name: ButtonManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1471,13 +1432,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2014975258}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aa1cf74cfb0f44398b886092eb58575, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f9049f89726b4506989e153081791d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickFlag: 0
-  cursorFlag: 0
-  ClickSound: {fileID: 8300000, guid: 48c3769f823704e3fbf52b2830d44cd1, type: 3}
-  CusrorSound: {fileID: 8300000, guid: d1ac4b03bf4eb403293164d325d28aa9, type: 3}
+  _ClickSound: {fileID: 0}
+  _CusrorSound: {fileID: 0}
+  _GameManager: {fileID: 0}
+  _CalenderManager: {fileID: 0}
+  _MenuManager: {fileID: 0}
+  _MessageManager: {fileID: 0}
+  _ResultManager: {fileID: 0}
+  _TitleManager: {fileID: 0}
+  _RankingManager: {fileID: 0}
 --- !u!4 &2014975261
 Transform:
   m_ObjectHideFlags: 0
