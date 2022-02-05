@@ -10,6 +10,10 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
     [SerializeField]
     GameObject m_rankingPanel = default;
 
+    [Tooltip("名前を表示するテキスト")]
+    [SerializeField]
+    Text[] _NameTexts = default;
+
     [Tooltip("スコアを表示するテキスト")]
     [SerializeField]
     Text[] _ScoreTexts = default;
@@ -45,9 +49,13 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
         for(int i = 0; i < current_ranking.Length;i++)
         {
             //Debug.Log("[" + i + "]name:" + current_ranking[i].Name + " score:" + current_ranking[i].Score);
-            var name = string.Format("{0,-15}", current_ranking[i].Name);
-            var score = string.Format("{0,-8}", current_ranking[i].Score);
-            _ScoreTexts[i].text = name + ": $" + score;
+            var name = string.Format("{0,-15}", current_ranking[i].Name).PadLeft(5);
+            var score = string.Format(": ${0,-8}", current_ranking[i].Score.ToString("N2"));
+            if (current_ranking[i].Score < 0)
+                score = string.Format(": {0,-8}", "--------");
+
+            _NameTexts[i].text = name;
+            _ScoreTexts[i].text = score ;
         }
     }
 
