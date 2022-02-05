@@ -119,4 +119,10 @@ public class GameDataManager : MonoBehaviour
     {
         Debug.Log("path:" + Application.dataPath);
     }
+
+    public static void ResetData()
+    {
+        GameData.ResetData();
+        SaveData();
+    }
 }

@@ -1,25 +1,16 @@
 ﻿<Properties StartupConfiguration="{560D3065-1C19-F8AB-1038-31296A3C6F25}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Game/StackScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Game/GameDataManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Game/GameManager.cs" Line="49" Column="11" IsPinned="True" />
       <File FileName="Assets/Scripts/Game/RankingManager.cs" Line="119" Column="52" />
-      <File FileName="Assets/Scripts/Game/SaveData.cs" Line="11" Column="21" />
       <File FileName="Assets/Datas/Test.json" Line="1" Column="102" />
       <File FileName="Assets/Scripts/Game/JsonDataTest.cs" Line="52" Column="31" />
       <File FileName="Assets/Scripts/Game/SaveManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Game/HighScoreObj.cs" Line="38" Column="22" />
-      <File FileName="Assets/Scripts/Menu/MenuManager.cs" Line="64" Column="24" />
-      <File FileName="Assets/Scripts/Button/ButtonFunctions.cs" Line="342" Column="38" />
+      <File FileName="Assets/Scripts/Button/ButtonFunctions.cs" Line="419" Column="10" />
       <File FileName="Assets/Scripts/Result/ResultManager.cs" Line="200" Column="34" />
       <File FileName="Assets/Scripts/Game/GameDataManager.cs" Line="97" Column="62" />
-      <File FileName="Assets/Scripts/Result/RankInManager.cs" Line="52" Column="26" />
-      <File FileName="Assets/Scripts/Title/TitleManager.cs" Line="60" Column="58" />
-      <File FileName="Assets/Scripts/Game/TimeLimitScript.cs" Line="35" Column="1" />
-      <File FileName="Assets/Scripts/Game/SelectPlate.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Game/SelectCustomer.cs" Line="43" Column="9" />
-      <File FileName="Assets/Scripts/Game/CustomerManager.cs" Line="124" Column="69" />
-      <File FileName="Assets/Scripts/Game/GameSystem.cs" Line="189" Column="116" />
-      <File FileName="Assets/Scripts/Game/StackScript.cs" Line="7" Column="22" />
+      <File FileName="Assets/Scripts/Result/RankInManager.cs" Line="57" Column="10" />
+      <File FileName="Assets/Scripts/Title/TitleManager.cs" Line="17" Column="6" />
+      <File FileName="Assets/Scripts/Option/ResetSound.cs" Line="32" Column="37" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -29,9 +20,10 @@
               <Node name="Scripts" expanded="True">
                 <Node name="Button" expanded="True" />
                 <Node name="Game" expanded="True">
-                  <Node name="StackScript.cs" selected="True" />
+                  <Node name="GameDataManager.cs" selected="True" />
                 </Node>
                 <Node name="Menu" expanded="True" />
+                <Node name="Option" expanded="True" />
                 <Node name="Result" expanded="True" />
                 <Node name="Title" expanded="True" />
               </Node>

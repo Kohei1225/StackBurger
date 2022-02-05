@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //音量バランスをリセットするクラス
-public class ResetSound : MonoBehaviour
+public class ResetButton : MonoBehaviour
 {
-    ControlSound [] CSs;
+    ControlSound [] _ControlSounds;
 
     // Start is called before the first frame update
     void Start()
     {
-        CSs = new ControlSound[]{
+        _ControlSounds = new ControlSound[]{
             GameObject.Find("BGMVolumeSlider").GetComponent<ControlSound>(),
             GameObject.Find("ButtonVolumeSlider").GetComponent<ControlSound>(),
             GameObject.Find("SEVolumeSlider").GetComponent<ControlSound>()
@@ -29,8 +29,9 @@ public class ResetSound : MonoBehaviour
         {
             PlayerPrefs.SetInt("day",0);
             PlayerPrefs.SetInt("Complete",0);
+            GameDataManager.ResetData();
         }
-        for(int i = 0; i < CSs.Length; i++)CSs[i]._ResetFlag = true;
+        for(int i = 0; i < _ControlSounds.Length; i++)_ControlSounds[i]._ResetFlag = true;
         
     }
 }

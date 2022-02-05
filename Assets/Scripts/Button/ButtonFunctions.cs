@@ -300,6 +300,20 @@ public class ButtonFunctions : SingletonMonoBehaviour<ButtonFunctions>
         _TitleManager._State = TitleManager.TitleState.Ranking;
     }
 
+    /// <summary> ランキング画面の表示 </summary>
+    public void DisplayWarning()
+    {
+        if (_TitleManager == null)
+        {
+            Debug.Log("TitleManagerがアタッチされてない.");
+            return;
+        }
+
+        PlayClickSound();
+        _TitleManager._State = TitleManager.TitleState.Warning;
+        _TitleManager.SetButonsInteractable(false);
+    }
+
     /// <summary> ランキング画面を閉じる </summary>
     public void CloseRankingCanvas()
     {
@@ -311,6 +325,20 @@ public class ButtonFunctions : SingletonMonoBehaviour<ButtonFunctions>
 
         PlayClickSound();
         _TitleManager._State = TitleManager.TitleState.Option;
+    }
+
+    /// <summary> 警告画面を閉じる </summary>
+    public void CloseWarningCanvas()
+    {
+        if (_TitleManager == null)
+        {
+            Debug.Log("TitleManagerがアタッチされてない.");
+            return;
+        }
+
+        PlayClickSound();
+        _TitleManager._State = TitleManager.TitleState.Option;
+        _TitleManager.SetButonsInteractable(true);
     }
 
     /// <summary> タイトル画面に戻る </summary>
@@ -417,7 +445,5 @@ public class ButtonFunctions : SingletonMonoBehaviour<ButtonFunctions>
                     break;
                 }
         }
-
-
     }
 }

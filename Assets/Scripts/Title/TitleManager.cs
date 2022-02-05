@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class TitleManager : MonoBehaviour
+public class TitleManager : SingletonMonoBehaviour<TitleManager>
 {
     GameObject _SecondObject;
     GameObject _ThirdObject;
@@ -13,6 +14,7 @@ public class TitleManager : MonoBehaviour
         Explain,
         Option,
         Ranking,
+        Warning,
     }
 
     /// <summary> タイトル画面の状態 </summary>
@@ -23,6 +25,10 @@ public class TitleManager : MonoBehaviour
     [SerializeField]private GameObject _Option = null;
     /// <summary> ランキング表示用オブジェクト </summary>
     [SerializeField] private GameObject _Ranking = null;
+    /// <summary> 警告表示用オブジェクト </summary>
+    [SerializeField] private GameObject _Warning = null;
+    /// <summary> オプションのボタンの配列 </summary>
+    [SerializeField] private Button[] _OptionButtons = null;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +36,7 @@ public class TitleManager : MonoBehaviour
         if(PlayerPrefs.GetInt("Complete") == 0)GameObject.Find("Complete").SetActive(false);
         _Explain.SetActive(false);
         _Option.SetActive(false);
+        _Warning.SetActive(false);
         _SecondObject = GameObject.Find("secondObject");
         _SecondObject.SetActive(false);
         _ThirdObject = GameObject.Find("thirdObject");
@@ -56,10 +63,19 @@ public class TitleManager : MonoBehaviour
     void Update()
     {
         _Explain.SetActive(_State == TitleState.Explain);
-        _Option.SetActive(_State == TitleState.Option);
+        _Option.SetActive(_State == TitleState.Option || _State == TitleState.Warning);
         _Ranking.SetActive(_State == TitleState.Ranking);
+        _Warning.SetActive(_State == TitleState.Warning);
 
         if(PlayerPrefs.GetInt("Complete") == 0 && GameObject.Find("Complete"))
             GameObject.Find("Complete").SetActive(false);
+    }
+
+    public void SetButonsInteractable(bool value)
+    {
+        for(int i = 0;i < _OptionButtons.Length;i++)
+        {
+            _OptionButtons[i].interactable = value;
+        }
     }
 }
