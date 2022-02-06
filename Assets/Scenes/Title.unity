@@ -3015,7 +3015,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &426469841
 Transform:
   m_ObjectHideFlags: 0
@@ -4590,7 +4590,6 @@ GameObject:
   - component: {fileID: 804222580}
   - component: {fileID: 804222579}
   - component: {fileID: 804222578}
-  - component: {fileID: 804222581}
   - component: {fileID: 804222582}
   m_Layer: 5
   m_Name: InitializeDataButton
@@ -4663,9 +4662,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 804222581}
-        m_TargetAssemblyTypeName: ResetButton, Assembly-CSharp
-        m_MethodName: OnClick
+      - m_Target: {fileID: 1843235042}
+        m_TargetAssemblyTypeName: OptioonManager, Assembly-CSharp
+        m_MethodName: InitializeData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1556127314}
+        m_TargetAssemblyTypeName: ButtonFunctions, Assembly-CSharp
+        m_MethodName: PlayClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4713,18 +4724,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804222576}
   m_CullTransparentMesh: 1
---- !u!114 &804222581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 804222576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebbc5b0e0db0f4d46a6e55daa2976e61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &804222582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7151,7 +7150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1129189685}
   m_Layer: 0
-  m_Name: NewRankInObject
+  m_Name: WarningObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10294,7 +10293,6 @@ GameObject:
   - component: {fileID: 1612110048}
   - component: {fileID: 1612110047}
   - component: {fileID: 1612110050}
-  - component: {fileID: 1612110046}
   m_Layer: 0
   m_Name: ResetValueButton
   m_TagString: Untagged
@@ -10322,18 +10320,6 @@ RectTransform:
   m_AnchoredPosition: {x: 376.56, y: -214.57}
   m_SizeDelta: {x: 155.41, y: 42.7}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1612110046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1612110044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebbc5b0e0db0f4d46a6e55daa2976e61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1612110047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10378,9 +10364,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1612110046}
-        m_TargetAssemblyTypeName: ResetSound, Assembly-CSharp
-        m_MethodName: OnClick
+      - m_Target: {fileID: 1843235042}
+        m_TargetAssemblyTypeName: OptioonManager, Assembly-CSharp
+        m_MethodName: ResetSoundsVolumes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12156,6 +12142,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1843235041}
+  - component: {fileID: 1843235042}
   m_Layer: 0
   m_Name: OptionObject
   m_TagString: Untagged
@@ -12178,6 +12165,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1843235042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843235040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a92fd49e25ae4394928527fca453ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ControlSounds:
+  - {fileID: 1861586236}
+  - {fileID: 1228898288}
+  - {fileID: 216400907}
 --- !u!1 &1861586233
 GameObject:
   m_ObjectHideFlags: 0
@@ -13106,7 +13109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!111 &1986280116
 Animation:
   m_ObjectHideFlags: 0

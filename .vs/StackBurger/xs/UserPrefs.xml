@@ -1,27 +1,27 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Datas/Test.json">
+﻿<Properties StartupConfiguration="{560D3065-1C19-F8AB-1038-31296A3C6F25}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Option/OptioonManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Game/RecipeList.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Menu/CalenderManager.cs" />
-      <File FileName="Assets/Scripts/Result/ResultManager.cs" />
-      <File FileName="Assets/Scripts/Menu/MenuManager.cs" />
-      <File FileName="Assets/Scripts/Option/ResetButton.cs" />
-      <File FileName="Assets/Scripts/Option/EasyToggle.cs" />
-      <File FileName="Assets/Scripts/Title/TitleManager.cs" />
-      <File FileName="Assets/Scripts/Game/RankingManager.cs" />
-      <File FileName="Assets/Datas/Test.json" Line="3" Column="5" />
+      <File FileName="Assets/Scripts/Option/OptioonManager.cs" Line="34" Column="30" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="StackBurger" expanded="True" selected="True" />
+          <Node name="StackBurger" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Option" expanded="True">
+                  <Node name="OptioonManager.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="525bfc68-ad68-46ee-a0d3-fb8a76ee21f7" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="00c997d2-ef69-4ef7-8285-824e2a627f27" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
