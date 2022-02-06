@@ -1,7 +1,10 @@
 ﻿<Properties StartupConfiguration="{560D3065-1C19-F8AB-1038-31296A3C6F25}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Option/OptioonManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Result/ResultManager.cs">
     <Files>
       <File FileName="Assets/Scripts/Option/OptioonManager.cs" Line="34" Column="30" />
+      <File FileName="Assets/Scripts/Button/ButtonFunctions.cs" Line="331" Column="26" />
+      <File FileName="Assets/Scripts/Title/TitleManager.cs" Line="68" Column="9" />
+      <File FileName="Assets/Scripts/Result/ResultManager.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -9,9 +12,12 @@
           <Node name="StackBurger" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="Option" expanded="True">
-                  <Node name="OptioonManager.cs" selected="True" />
+                <Node name="Button" expanded="True" />
+                <Node name="Option" expanded="True" />
+                <Node name="Result" expanded="True">
+                  <Node name="ResultManager.cs" selected="True" />
                 </Node>
+                <Node name="Title" expanded="True" />
               </Node>
             </Node>
           </Node>

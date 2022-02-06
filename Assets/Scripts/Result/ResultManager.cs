@@ -16,7 +16,7 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
     /// <summary> チップの合計 </summary>
     private float _TotalChip = 100.245f;
     /// <summary> 何日目か </summary>
-    private int _CurrentDay;
+    private int _CurrentDay = 1;
     /// <summary> 完璧に渡した回数 </summary>
     private int _NumberOfPerfect = 7;
     /// <summary>  </summary>
@@ -226,6 +226,7 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
                     FindObjectOfType<RankInManager>().PlayRankInAnim();
                 }
 
+                Debug.Log("CurrentDay:" + CurrentDay);
                 if (_FinalScore >= _ClearPoints[CurrentDay-1])
                 {
                     if (_CurrentDay < 7)
