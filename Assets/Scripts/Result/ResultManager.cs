@@ -28,7 +28,7 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
     /// <summary>  </summary>
     private int _FrameCounter = 0;
     /// <summary> ノルマスコア </summary>
-    private int _ClearPoint = 100;
+    private int[] _ClearPoints = { 50, 100, 100, 100, 100, 100, 150};
 
     private const int RESULT_TEXT_NUM = 6;
 
@@ -170,7 +170,7 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
         if(_CurrentDay == PlayerPrefs.GetInt("day") + 1)
         {
             //もし合格点を出したら次の日を更新する
-            if(_FinalScore > _ClearPoint)PlayerPrefs.SetInt("day",_CurrentDay);
+            if(_FinalScore > _ClearPoints[CurrentDay-1])PlayerPrefs.SetInt("day",_CurrentDay);
         }
 
         _AudioSource.volume = PlayerPrefs.GetFloat("SEvol") * PlayerPrefs.GetInt("SEex");
@@ -226,7 +226,7 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
                     FindObjectOfType<RankInManager>().PlayRankInAnim();
                 }
 
-                if (_FinalScore >= _ClearPoint)
+                if (_FinalScore >= _ClearPoints[CurrentDay-1])
                 {
                     if (_CurrentDay < 7)
                     {
@@ -244,7 +244,7 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
                 else
                 {
                     _EndText.SetActive(true);
-                    _EndText.GetComponent<Text>().text = _ClearPoint + "が最低ラインだ！！";
+                    _EndText.GetComponent<Text>().text = _ClearPoints[CurrentDay-1] + "が最低ラインだ！！";
 
                 }
                 return;
