@@ -8,17 +8,17 @@ using UnityEngine.SceneManagement;
 public class ResultManager : SingletonMonoBehaviour<ResultManager>
 {
     /// <summary> 受け渡した回数 </summary>
-    private int _GoodSum = 10;
+    private int _NumberOfSales = 10;
     /// <summary> 怒らせた回数 </summary>
-    private int _AngrySum = 2;
+    private int _NumberOfAngry = 2;
     /// <summary> ミスした回数 </summary>
-    private int _MissSum = 4;
+    private int _NumberOfMiss = 4;
     /// <summary> チップの合計 </summary>
-    private float _ChipSum = 100.245f;
+    private float _TotalChip = 100.245f;
     /// <summary> 何日目か </summary>
     private int _CurrentDay;
     /// <summary> 完璧に渡した回数 </summary>
-    private int _HappySum;
+    private int _NumberOfPerfect = 7;
     /// <summary>  </summary>
     private float _MoveValue = 0;
     /// <summary> 最終的なスコア </summary>
@@ -30,10 +30,12 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
     /// <summary> ノルマスコア </summary>
     private int _ClearPoint = 100;
 
-    public GameObject[] _TextObject;
-    Text[] _ResultTexts = new Text[5];
-    string[] _ResultTextTail = { "回", "回", "回", "$", "" };
-    float[] _Score = new float[5];
+    private const int RESULT_TEXT_NUM = 6;
+
+    [SerializeField]private Text[] _ResultTexts = new Text[RESULT_TEXT_NUM];
+    string[] _ResultTextTail = { "回", "回", "回", "", "" ,""};
+    string[] _ResultTextHead = { "", "", "", "$", "$", "$" };
+    float[] _Score = new float[RESULT_TEXT_NUM];
     bool _HasStart = false;
     GameObject _NextDayButton;
     GameObject _EndingButton;
@@ -65,40 +67,53 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
     }
 
     /// <summary>  </summary>
-    public int GoodSum
+    public int NumberOfSales
     {
-        set { _GoodSum = value; }
-        get { return _GoodSum; }
+        set { _NumberOfSales = value; }
+        get { return _NumberOfSales; }
     }
 
     /// <summary>  </summary>
-    public int AngrySum
+    public int NumberOfAngry
     {
-        set { _AngrySum = value; }
-        get { return _AngrySum; }
+        set { _NumberOfAngry = value; }
+        get { return _NumberOfAngry; }
     }
 
     /// <summary>  </summary>
-    public int MissSum
+    public int NumberOfMiss
     {
-        set { _MissSum = value; }
-        get { return _MissSum; }
+        set { _NumberOfMiss = value; }
+        get { return _NumberOfMiss; }
     }
 
     /// <summary>  </summary>
-    public float ChipSum
+    public float TotalChip
     {
-        set { _ChipSum = value; }
-        get { return _ChipSum; }
+        set { _TotalChip = value; }
+        get { return _TotalChip; }
     }
 
     /// <summary>  </summary>
-    public int HappySum
+    public int NumberOfPerfect
     {
-        set { _GoodSum = value; }
-        get { return _GoodSum; }
+        set { _NumberOfPerfect = value; }
+        get { return _NumberOfPerfect; }
     }
 
+    public float BounusRate
+    {
+        get
+        {
+
+            if (NumberOfPerfect - NumberOfAngry - NumberOfMiss <= 0) return 0;
+
+            // ここで返したい計算式は
+            // (完璧に渡した回数 - 怒らせた回数 - ミスした回数)/受け渡そうとした回数
+            Debug.Log("rate:" + (float)(NumberOfPerfect - NumberOfAngry - NumberOfMiss) / (NumberOfSales + NumberOfMiss));
+            return (float)(NumberOfPerfect - NumberOfAngry - NumberOfMiss) / (NumberOfSales + NumberOfMiss);
+        }
+    }
     public float FinalScore
     {
         set
@@ -134,14 +149,21 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
         //GameObject.Find("RetryButton").GetComponent<PlayButton>().day = this._CurrentDay;
 
         //あらかじめスコアを計算しておく
-        for(int i = 0; i < 5; i++)_ResultTexts[i] = _TextObject[i].GetComponent<Text>();
-        FinalScore = (_GoodSum * 0.02f * _ChipSum) - (_AngrySum * 10) - (_MissSum * 2.5f) + _ChipSum + 0*_HappySum;
+        Debug.Log("Perfect:" + NumberOfPerfect);
+        Debug.Log("Angry:" + NumberOfAngry);
+        Debug.Log("Miss:" + NumberOfMiss);
+        Debug.Log("Sales:" + NumberOfSales);
 
-        _Score[0] = _GoodSum; _Score[1] = _AngrySum; 
-        _Score[2] = _MissSum; _Score[3] = _ChipSum; 
-        _Score[4] = _FinalScore;
+        FinalScore = TotalChip + TotalChip * 0.8f * BounusRate;//(_GoodSum * 0.02f * _ChipSum) - (_AngrySum * 10) - (_MissSum * 2.5f) + _ChipSum + 0*_HappySum;
 
-        Debug.Log("chipSum:" + _ChipSum);
+        _Score[0] = _NumberOfSales;
+        _Score[1] = _NumberOfAngry; 
+        _Score[2] = _NumberOfMiss;
+        _Score[3] = _TotalChip;
+        _Score[4] = _TotalChip * 0.8f * BounusRate;
+        _Score[5] = _FinalScore;
+
+        Debug.Log("chipSum:" + _TotalChip);
         if(PlayerPrefs.HasKey("day"))Debug.Log((PlayerPrefs.GetInt("day") + 1) + "日目");//日付表示
 
         //もし今やってるステージが最新ステージだったら
@@ -170,7 +192,7 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
         }
 
         //印がついたら始める
-        if(_HasStart && _Junban < 5)
+        if(_HasStart && _Junban < _ResultTexts.Length)
         {
             //Debug.Log("入ってる");
 
@@ -189,14 +211,14 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
                 //Debug.Log("等しい");
 
                 //最後の要素だったら
-                if(_Junban == 5)
+                if(_Junban == _ResultTexts.Length)
                 {
                     _AudioSource.Stop();
                     _AudioSource.PlayOneShot(_Cymbal);
                 }
             }
 
-            if (_Junban == 5)
+            if (_Junban == _ResultTexts.Length)
             {
                 //スコアがランクインするかの確認
                 if(RankingManager.Instance.IsRankInScore(FinalScore,CurrentDay))
@@ -269,11 +291,11 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
 
     bool UpdateCountValue(int order)
     {
-        //
-        if(_MoveValue == 0)
-        {
-            Debug.Log("[ " + order + " ](" + _Score[order] + ")");
-        }
+        ////
+        //if(_MoveValue == 0)
+        //{
+        //    Debug.Log("[ " + order + " ](" + _Score[order] + ")");
+        //}
         //Debug.Log(_MoveValue);
         var diff = _Score[order] - _MoveValue;
         //Debug.Log("diff:" + diff);
@@ -285,19 +307,10 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
         else if (diff > 1) _MoveValue += dir;
         else _MoveValue = _Score[order];
 
-        if (order >= 3)
-        {
-            _ResultTexts[order].text = _MoveValue.ToString("N2") + _ResultTextTail[order];
-            if(order == 3)
-            {
-                _ResultTexts[order].text = _ResultTextTail[order] + _MoveValue.ToString("N2");
-            }
+        var score = _MoveValue.ToString();
+        if (_ResultTextHead[order] == "$") score = _MoveValue.ToString("N2");
 
-        }
-        else
-        {
-            _ResultTexts[order].text = _MoveValue + _ResultTextTail[order];
-        }
+        _ResultTexts[order].text = _ResultTextHead[order] + score + _ResultTextTail[order];
         return _MoveValue == _Score[order];
     }
 

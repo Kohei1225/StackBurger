@@ -265,12 +265,12 @@ public class GameSystem : SingletonMonoBehaviour<GameSystem>
         //シーン切り替え後のスクリプトを取得
         var resultManager = GameObject.Find("Managers").GetComponent<ResultManager>();
 
-        resultManager.GoodSum = this.HappyNum + this.ExclamationNum + this.StrangeNum;
-        resultManager.AngrySum = this.AngryNum;
-        resultManager.MissSum = this.BadNum;
+        resultManager.NumberOfSales = this.HappyNum + this.ExclamationNum + this.StrangeNum;
+        resultManager.NumberOfAngry = this.AngryNum;
+        resultManager.NumberOfMiss = this.BadNum;
         resultManager.CurrentDay = this.CurrentDay;
-        resultManager.ChipSum = this._Chip;
-        resultManager.HappySum = this.HappyNum;
+        resultManager.TotalChip = this._Chip;
+        resultManager.NumberOfPerfect = this.HappyNum;
 
         //イベントから削除
         SceneManager.sceneLoaded -= GiveScore;
