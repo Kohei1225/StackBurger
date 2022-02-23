@@ -1,33 +1,25 @@
 ﻿<Properties StartupConfiguration="{560D3065-1C19-F8AB-1038-31296A3C6F25}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Result/ResultManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/DebugVisual.cs">
     <Files>
-      <File FileName="Assets/Scripts/Option/OptioonManager.cs" Line="34" Column="30" />
-      <File FileName="Assets/Scripts/Button/ButtonFunctions.cs" Line="331" Column="26" />
-      <File FileName="Assets/Scripts/Title/TitleManager.cs" Line="68" Column="9" />
-      <File FileName="Assets/Scripts/Result/ResultManager.cs" Line="19" Column="32" />
+      <File FileName="Assets/Datas/Test.json" Line="6" Column="28" />
+      <File FileName="Assets/Scripts/Option/OptioonManager.cs" />
+      <File FileName="Assets/Scripts/Button/ButtonFunctions.cs" />
+      <File FileName="Assets/Scripts/Title/TitleManager.cs" />
+      <File FileName="Assets/Scripts/Result/ResultManager.cs" />
+      <File FileName="Assets/Scripts/Game/RankingManager.cs" Line="75" Column="24" />
+      <File FileName="Assets/Scripts/DebugVisual.cs" Line="6" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="StackBurger" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="Button" expanded="True" />
-                <Node name="Option" expanded="True" />
-                <Node name="Result" expanded="True">
-                  <Node name="ResultManager.cs" selected="True" />
-                </Node>
-                <Node name="Title" expanded="True" />
-              </Node>
-            </Node>
-          </Node>
+          <Node name="StackBurger" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="00c997d2-ef69-4ef7-8285-824e2a627f27" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="89e2671b-0472-4b5c-93a2-c4dfb1751449" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

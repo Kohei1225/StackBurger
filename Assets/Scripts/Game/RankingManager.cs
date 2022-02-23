@@ -73,6 +73,16 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
         Debug.Log("UpdateRankingView()");
         _RankingTitleText.text = date + "日目のランキング";
         var current_ranking = RankingOfEachDate(date);
+        FindObjectOfType<DebugVisual>().GetComponent<DebugVisual>().Change2DObjColorForDebug();
+        if(current_ranking == null)
+        {
+            for(int i = 0;i < 5;i++)
+            {
+                _NameTexts[i].text = "そもそも";
+                _ScoreTexts[i].text = "取得できてない";
+            }
+            return;
+        }
         for(int i = 0; i < current_ranking.Length;i++)
         {
             //Debug.Log("[" + i + "]name:" + current_ranking[i].Name + " score:" + current_ranking[i].Score);
