@@ -360,7 +360,6 @@ public class ButtonFunctions : SingletonMonoBehaviour<ButtonFunctions>
         if (_RankingManager == null)
         {
             Debug.LogError("RankingManagerがアタッチされてない.");
-            FindObjectOfType<DebugVisual>().GetComponent<DebugVisual>().Change2DObjColorForError();
             return;
         }
         _RankingManager.ChangeNextDate();
@@ -373,7 +372,6 @@ public class ButtonFunctions : SingletonMonoBehaviour<ButtonFunctions>
         if (_RankingManager == null)
         {
             Debug.LogError("RankingManagerがアタッチされてない.");
-            FindObjectOfType<DebugVisual>().GetComponent<DebugVisual>().Change2DObjColorForError();
             return;
         }
         _RankingManager.ChangePreviousDate();

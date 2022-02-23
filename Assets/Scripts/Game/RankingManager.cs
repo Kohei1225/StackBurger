@@ -64,7 +64,6 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
             UpdateRankingView();
             _PreviousButton.interactable = false;
         }
-        FindObjectOfType<DebugVisual>().GetComponent<DebugVisual>().Change2DObjColorForDebug02();
     }
 
     /// <summary> 指定したテキストにランキングを表示 </summary>
