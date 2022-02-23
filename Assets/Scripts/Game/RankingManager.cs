@@ -73,7 +73,6 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
         Debug.Log("UpdateRankingView()");
         _RankingTitleText.text = date + "日目のランキング";
         var current_ranking = RankingOfEachDate(date);
-        FindObjectOfType<DebugVisual>().GetComponent<DebugVisual>().Change2DObjColorForDebug01();
         if(current_ranking == null)
         {
             for(int i = 0;i < 5;i++)
