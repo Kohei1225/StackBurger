@@ -35,17 +35,22 @@ public class DebugVisual : MonoBehaviour
     /// コイツをアタッチしたオブジェクトの色を変更するよ.
     /// コイツを使いたいならオブジェクトにSpriteRendererをアタッチしよう
     /// </summary>
-    public void Change2DObjColorForDebug()
+    public void Change2DObjColorForDebug01()
     {
         _CurrentColor++;
-        if (_CurrentColor == _Colors.Length) _CurrentColor = 0;
+        if (_CurrentColor >= _Colors.Length/2) _CurrentColor = 0;
         GetComponent<SpriteRenderer>().color = _Colors[_CurrentColor];
     }
 
     public void Change2DObjColorForError()
     {
-        _CurrentColor++;
-        if (_CurrentColor == _Colors.Length) _CurrentColor = 0;
         GetComponent<SpriteRenderer>().color = new Color(0.5f,0.5f,0.5f);
+    }
+
+    public void Change2DObjColorForDebug02()
+    {
+        _CurrentColor++;
+        if (_CurrentColor < _Colors.Length/2 || _CurrentColor >= _Colors.Length) _CurrentColor = _Colors.Length / 2;
+        GetComponent<SpriteRenderer>().color = _Colors[_CurrentColor];
     }
 }

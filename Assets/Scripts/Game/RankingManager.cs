@@ -64,6 +64,7 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
             UpdateRankingView();
             _PreviousButton.interactable = false;
         }
+        FindObjectOfType<DebugVisual>().GetComponent<DebugVisual>().Change2DObjColorForDebug02();
     }
 
     /// <summary> 指定したテキストにランキングを表示 </summary>
@@ -73,7 +74,7 @@ public class RankingManager : SingletonMonoBehaviour<RankingManager>
         Debug.Log("UpdateRankingView()");
         _RankingTitleText.text = date + "日目のランキング";
         var current_ranking = RankingOfEachDate(date);
-        FindObjectOfType<DebugVisual>().GetComponent<DebugVisual>().Change2DObjColorForDebug();
+        FindObjectOfType<DebugVisual>().GetComponent<DebugVisual>().Change2DObjColorForDebug01();
         if(current_ranking == null)
         {
             for(int i = 0;i < 5;i++)

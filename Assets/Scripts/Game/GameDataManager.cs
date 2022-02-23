@@ -75,9 +75,10 @@ public class GameData
 }
 
 /// <summary> 任意のゲームデータを扱うクラス </summary>
-public class GameDataManager : MonoBehaviour
+public class GameDataManager
 {
     public static GameDataManager Instance = new GameDataManager();
+    //Application.streamingAssetsPathもあるらしい？
     private const string FILE_PATH = "/Datas/";
     private const string FILE_NAME = "Test.json";
 
@@ -85,7 +86,8 @@ public class GameDataManager : MonoBehaviour
     {
         StreamWriter writer;
         string json = JsonUtility.ToJson(saveData);
-        writer = new StreamWriter(Application.dataPath + FILE_PATH + fileName, false);
+        //writer = new StreamWriter(Application.dataPath + FILE_PATH + fileName, false);
+        writer = new StreamWriter(Application.streamingAssetsPath + FILE_PATH + fileName, false);
         writer.Write(json);
         writer.Flush();
         writer.Close();
@@ -99,11 +101,12 @@ public class GameDataManager : MonoBehaviour
 
     public static T LoadData<T>(string jsonFileName)
     {
-        if(File.Exists(Application.dataPath + FILE_PATH + jsonFileName))
+        if(File.Exists(Application.streamingAssetsPath + FILE_PATH + jsonFileName))
         {
             string json;
             StreamReader reader;
-            reader = new StreamReader(Application.dataPath + FILE_PATH + jsonFileName, false);
+            //reader = new StreamReader(Application.dataPath + FILE_PATH + jsonFileName, false);
+            reader = new StreamReader(Application.streamingAssetsPath + FILE_PATH + jsonFileName, false);
             json = reader.ReadToEnd();
             reader.Close();
 

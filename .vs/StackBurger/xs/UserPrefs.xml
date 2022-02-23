@@ -1,18 +1,28 @@
 ﻿<Properties StartupConfiguration="{560D3065-1C19-F8AB-1038-31296A3C6F25}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/DebugVisual.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Game/GameDataManager.cs">
     <Files>
       <File FileName="Assets/Datas/Test.json" Line="6" Column="28" />
-      <File FileName="Assets/Scripts/Option/OptioonManager.cs" />
-      <File FileName="Assets/Scripts/Button/ButtonFunctions.cs" />
+      <File FileName="Assets/Scripts/Option/OptioonManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Button/ButtonFunctions.cs" Line="365" Column="10" />
       <File FileName="Assets/Scripts/Title/TitleManager.cs" />
-      <File FileName="Assets/Scripts/Result/ResultManager.cs" />
-      <File FileName="Assets/Scripts/Game/RankingManager.cs" Line="75" Column="24" />
-      <File FileName="Assets/Scripts/DebugVisual.cs" Line="6" Column="5" />
+      <File FileName="Assets/Scripts/Result/ResultManager.cs" Line="19" Column="32" />
+      <File FileName="Assets/Scripts/Game/RankingManager.cs" Line="57" Column="66" />
+      <File FileName="Assets/Scripts/DebugVisual.cs" Line="50" Column="43" />
+      <File FileName="Assets/Scripts/Game/GameDataManager.cs" Line="100" Column="21" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="StackBurger" expanded="True" selected="True" />
+          <Node name="StackBurger" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Game" expanded="True">
+                  <Node name="GameDataManager.cs" selected="True" />
+                </Node>
+                <Node name="Option" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>
