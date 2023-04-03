@@ -29,6 +29,7 @@ public class TitleManager : SingletonMonoBehaviour<TitleManager>
     [SerializeField] private GameObject _Warning = null;
     /// <summary> オプションのボタンの配列 </summary>
     [SerializeField] private Button[] _OptionButtons = null;
+    [SerializeField] private GameObject _titleCanvas = null;
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +67,7 @@ public class TitleManager : SingletonMonoBehaviour<TitleManager>
         _Option.SetActive(_State == TitleState.Option || _State == TitleState.Warning);
         _Ranking.SetActive(_State == TitleState.Ranking);
         _Warning.SetActive(_State == TitleState.Warning);
+        _titleCanvas.SetActive(_State == TitleState.Title);
 
         if(PlayerPrefs.GetInt("Complete") == 0 && GameObject.Find("Complete"))
             GameObject.Find("Complete").SetActive(false);
